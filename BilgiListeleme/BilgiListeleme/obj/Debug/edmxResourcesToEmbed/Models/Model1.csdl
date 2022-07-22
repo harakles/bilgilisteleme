@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBBilgiListelemeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TBLAdmin">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="AdminUserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AdminPw" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TBLCustomerVdsList">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Sirketİsmi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Vdsİp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="VdsName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="VdsPassword" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="RemoteDesktopId" Type="Int32" />
+    <NavigationProperty Name="TBLRemoteDesktop" Relationship="Self.FK_TBLCustomerVdsList_TBLRemoteDesktop" FromRole="TBLCustomerVdsList" ToRole="TBLRemoteDesktop" />
+  </EntityType>
+  <EntityType Name="TBLRemoteDesktop">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AnyDesk" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AnyDeskPw" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TeamViewer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TeamViewerPw" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TBLCustomerVdsList" Relationship="Self.FK_TBLCustomerVdsList_TBLRemoteDesktop" FromRole="TBLRemoteDesktop" ToRole="TBLCustomerVdsList" />
+  </EntityType>
+  <Association Name="FK_TBLCustomerVdsList_TBLRemoteDesktop">
+    <End Role="TBLRemoteDesktop" Type="Self.TBLRemoteDesktop" Multiplicity="0..1" />
+    <End Role="TBLCustomerVdsList" Type="Self.TBLCustomerVdsList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLRemoteDesktop">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TBLCustomerVdsList">
+        <PropertyRef Name="RemoteDesktopId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBBilgiListelemeEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="TBLAdmin" EntityType="Self.TBLAdmin" />
+    <EntitySet Name="TBLCustomerVdsList" EntityType="Self.TBLCustomerVdsList" />
+    <EntitySet Name="TBLRemoteDesktop" EntityType="Self.TBLRemoteDesktop" />
+    <AssociationSet Name="FK_TBLCustomerVdsList_TBLRemoteDesktop" Association="Self.FK_TBLCustomerVdsList_TBLRemoteDesktop">
+      <End Role="TBLRemoteDesktop" EntitySet="TBLRemoteDesktop" />
+      <End Role="TBLCustomerVdsList" EntitySet="TBLCustomerVdsList" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

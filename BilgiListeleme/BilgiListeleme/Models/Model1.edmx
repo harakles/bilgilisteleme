@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DBBilgiListelemeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TBLAdmin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="AdminUserName" Type="nvarchar(max)" />
+          <Property Name="AdminPw" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TBLCustomerVdsList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sirketİsmi" Type="nvarchar(max)" />
+          <Property Name="Vdsİp" Type="nvarchar(max)" />
+          <Property Name="VdsName" Type="nvarchar(max)" />
+          <Property Name="VdsPassword" Type="nvarchar(max)" />
+          <Property Name="RemoteDesktopId" Type="int" />
+        </EntityType>
+        <EntityType Name="TBLRemoteDesktop">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AnyDesk" Type="nvarchar(max)" />
+          <Property Name="AnyDeskPw" Type="nvarchar(max)" />
+          <Property Name="TeamViewer" Type="nvarchar(max)" />
+          <Property Name="TeamViewerPw" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_TBLCustomerVdsList_TBLRemoteDesktop">
+          <End Role="TBLRemoteDesktop" Type="Self.TBLRemoteDesktop" Multiplicity="0..1" />
+          <End Role="TBLCustomerVdsList" Type="Self.TBLCustomerVdsList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLRemoteDesktop">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TBLCustomerVdsList">
+              <PropertyRef Name="RemoteDesktopId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBBilgiListelemeModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLAdmin" EntityType="Self.TBLAdmin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLCustomerVdsList" EntityType="Self.TBLCustomerVdsList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLRemoteDesktop" EntityType="Self.TBLRemoteDesktop" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TBLCustomerVdsList_TBLRemoteDesktop" Association="Self.FK_TBLCustomerVdsList_TBLRemoteDesktop">
+            <End Role="TBLRemoteDesktop" EntitySet="TBLRemoteDesktop" />
+            <End Role="TBLCustomerVdsList" EntitySet="TBLCustomerVdsList" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBBilgiListelemeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TBLAdmin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="AdminUserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AdminPw" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TBLCustomerVdsList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sirketİsmi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Vdsİp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="VdsName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="VdsPassword" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RemoteDesktopId" Type="Int32" />
+          <NavigationProperty Name="TBLRemoteDesktop" Relationship="Self.FK_TBLCustomerVdsList_TBLRemoteDesktop" FromRole="TBLCustomerVdsList" ToRole="TBLRemoteDesktop" />
+        </EntityType>
+        <EntityType Name="TBLRemoteDesktop">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AnyDesk" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AnyDeskPw" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TeamViewer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TeamViewerPw" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TBLCustomerVdsList" Relationship="Self.FK_TBLCustomerVdsList_TBLRemoteDesktop" FromRole="TBLRemoteDesktop" ToRole="TBLCustomerVdsList" />
+        </EntityType>
+        <Association Name="FK_TBLCustomerVdsList_TBLRemoteDesktop">
+          <End Role="TBLRemoteDesktop" Type="Self.TBLRemoteDesktop" Multiplicity="0..1" />
+          <End Role="TBLCustomerVdsList" Type="Self.TBLCustomerVdsList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLRemoteDesktop">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TBLCustomerVdsList">
+              <PropertyRef Name="RemoteDesktopId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBBilgiListelemeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TBLAdmin" EntityType="Self.TBLAdmin" />
+          <EntitySet Name="TBLCustomerVdsList" EntityType="Self.TBLCustomerVdsList" />
+          <EntitySet Name="TBLRemoteDesktop" EntityType="Self.TBLRemoteDesktop" />
+          <AssociationSet Name="FK_TBLCustomerVdsList_TBLRemoteDesktop" Association="Self.FK_TBLCustomerVdsList_TBLRemoteDesktop">
+            <End Role="TBLRemoteDesktop" EntitySet="TBLRemoteDesktop" />
+            <End Role="TBLCustomerVdsList" EntitySet="TBLCustomerVdsList" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBBilgiListelemeModelStoreContainer" CdmEntityContainer="DBBilgiListelemeEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DBBilgiListelemeModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLAdmin">
+            <EntityTypeMapping TypeName="DBBilgiListelemeModel.TBLAdmin">
+              <MappingFragment StoreEntitySet="TBLAdmin">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AdminUserName" ColumnName="AdminUserName" />
+                <ScalarProperty Name="AdminPw" ColumnName="AdminPw" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLCustomerVdsList">
+            <EntityTypeMapping TypeName="DBBilgiListelemeModel.TBLCustomerVdsList">
+              <MappingFragment StoreEntitySet="TBLCustomerVdsList">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Sirketİsmi" ColumnName="Sirketİsmi" />
+                <ScalarProperty Name="Vdsİp" ColumnName="Vdsİp" />
+                <ScalarProperty Name="VdsName" ColumnName="VdsName" />
+                <ScalarProperty Name="VdsPassword" ColumnName="VdsPassword" />
+                <ScalarProperty Name="RemoteDesktopId" ColumnName="RemoteDesktopId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLRemoteDesktop">
+            <EntityTypeMapping TypeName="DBBilgiListelemeModel.TBLRemoteDesktop">
+              <MappingFragment StoreEntitySet="TBLRemoteDesktop">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AnyDesk" ColumnName="AnyDesk" />
+                <ScalarProperty Name="AnyDeskPw" ColumnName="AnyDeskPw" />
+                <ScalarProperty Name="TeamViewer" ColumnName="TeamViewer" />
+                <ScalarProperty Name="TeamViewerPw" ColumnName="TeamViewerPw" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

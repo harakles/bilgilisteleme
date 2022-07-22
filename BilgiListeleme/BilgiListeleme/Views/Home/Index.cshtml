@@ -1,0 +1,55 @@
+﻿@using BilgiListeleme.Models
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<TBLCustomerVdsList>
+@{
+    ViewBag.Title = "Admin Login Page";
+}
+<div>
+    <label for="exampleDataList" class="form-label" style="background-color:#808080">
+        @using (Html.BeginForm("Index", "", FormMethod.Get))
+        {
+            <b>veriyi Giriniz: &nbsp; </b> @Html.TextBox("p")
+            <input type="submit" value="Ara" />}
+
+        @foreach (var data in Model)
+        {
+            <datalist id="datalistOptions">
+
+                <option value="@data.Sirketİsmi">
+
+            </datalist>
+        }
+    </label>
+</div>
+
+<table class="table caption-top">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Şirket İsmi</th>
+            <th scope="col">Vds İp</th>
+            <th scope="col">Vds Kullanıcı Adı</th>
+            <th scope="col">Vds şifre</th>
+            <th scope="col">Uzak Masaüstü</th>
+            <th scope="col">Güncelle</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var data in Model)
+        {
+            <tr>
+                <th scope="row">@data.Id</th>
+                <td>@data.Sirketİsmi</td>
+                <td>@data.Vdsİp</td>
+                <td>@data.VdsName</td>
+                <td>@data.VdsPassword</td>
+                <td><a href="/UzakDesktop/Index/@data.Id" class="btn btn-primary" type="button">Uzak Masaüstü</a></td>
+                <td><a href="/UzakDesktop/Sil/@data.Id" class="btn btn-danger" type="button">Sil</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+@Html.PagedListPager((IPagedList)Model, Sayfa => Url.Action("Index", new { Sayfa }))
+
+
