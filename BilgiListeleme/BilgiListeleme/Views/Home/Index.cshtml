@@ -10,17 +10,20 @@
     <div class="panel panel-default">
         <div class="panel-body">
             <div>
-                <br><br><br>
+                <br><br>
+
+                <br><div>
+                    Şirket İsmi:
+                </div>
                 <div>
                     <label for="exampleDataList" class="form-label">
                         @using (Html.BeginForm("Index", "", FormMethod.Get))
                         {
-                            <b>Data Giriniz: &nbsp; </b> @Html.TextBox("p")
-                            <input type="submit" value="Ara" />
-                            @*<div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-eye-open"></i></span>
-                <input id="Ara" type="text" class="form-control" name="Ara" value="" placeholder="Değeri Giriniz">
-            </div>*@
+                            <div class="input-group">
+
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-eye-open">@Html.TextBox("p")</i></span> &nbsp;
+
+                            </div>
                         }
                     </label>
                 </div>
@@ -44,16 +47,16 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var data in Model)
+        @foreach (var x in Model)
         {
             <tr>
-                <th scope="row">@data.Id</th>
-                <td>@data.Sirketİsmi</td>
-                <td>@data.Vdsİp</td>
-                <td>@data.VdsName</td>
-                <td>@data.VdsPassword</td>
-                <td><a href="/Home/RemoteDesk/@data.RemoteDesktopId" class="btn btn-primary" type="button">Uzak Masaüstü</a></td>
-                <td><a href="/UzakDesktop/Sil/@data.Id" class="btn btn-danger" type="button">Sil</a></td>
+                <th scope="row">@x.Id</th>
+                <td>@x.Sirketİsmi</td>
+                <td>@x.Vdsİp</td>
+                <td>@x.VdsName</td>
+                <td>@x.VdsPassword</td>
+                <td><a href="/Home/RemoteDesk/@x.Id" class="btn btn-info" type="button">Uzak Masaüstü</a></td>
+                <td><a href="/UzakDesktop/Sil/@x.Id" class="btn btn-danger" type="button">Sil</a></td>
             </tr>
         }
     </tbody>

@@ -7,9 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BilgiListeleme
+namespace BilgiListeleme.Models
 {
-    using BilgiListeleme.Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
@@ -29,6 +28,5 @@ namespace BilgiListeleme
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TBLAdmin> TBLAdmin { get; set; }
         public virtual DbSet<TBLCustomerVdsList> TBLCustomerVdsList { get; set; }
-        public virtual DbSet<TBLRemoteDesktop> TBLRemoteDesktop { get; set; }
     }
 }

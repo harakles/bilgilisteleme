@@ -19,8 +19,10 @@ namespace BilgiListeleme.Models
         public string Vdsİp { get; set; }
         public string VdsName { get; set; }
         public string VdsPassword { get; set; }
-        public Nullable<int> RemoteDesktopId { get; set; }
-    
-        public virtual TBLRemoteDesktop TBLRemoteDesktop { get; set; }
+        public string TeamViewer { get; set; }
+        public string TeamViewerPw { get; set; }
+        public string AnyDesk { get; set; }
+        public string AnyDeskPw { get; set; }
+        public string Notes { get; set; }
     }
 }

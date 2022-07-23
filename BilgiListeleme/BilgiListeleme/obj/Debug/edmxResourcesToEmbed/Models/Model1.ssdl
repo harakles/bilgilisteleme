@@ -27,38 +27,15 @@
     <Property Name="Vdsİp" Type="nvarchar(max)" />
     <Property Name="VdsName" Type="nvarchar(max)" />
     <Property Name="VdsPassword" Type="nvarchar(max)" />
-    <Property Name="RemoteDesktopId" Type="int" />
-  </EntityType>
-  <EntityType Name="TBLRemoteDesktop">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="AnyDesk" Type="nvarchar(max)" />
-    <Property Name="AnyDeskPw" Type="nvarchar(max)" />
     <Property Name="TeamViewer" Type="nvarchar(max)" />
     <Property Name="TeamViewerPw" Type="nvarchar(max)" />
+    <Property Name="AnyDesk" Type="nvarchar(max)" />
+    <Property Name="AnyDeskPw" Type="nvarchar(max)" />
+    <Property Name="Notes" Type="nvarchar(max)" />
   </EntityType>
-  <Association Name="FK_TBLCustomerVdsList_TBLRemoteDesktop">
-    <End Role="TBLRemoteDesktop" Type="Self.TBLRemoteDesktop" Multiplicity="0..1" />
-    <End Role="TBLCustomerVdsList" Type="Self.TBLCustomerVdsList" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TBLRemoteDesktop">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="TBLCustomerVdsList">
-        <PropertyRef Name="RemoteDesktopId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="DBBilgiListelemeModelStoreContainer">
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TBLAdmin" EntityType="Self.TBLAdmin" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TBLCustomerVdsList" EntityType="Self.TBLCustomerVdsList" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="TBLRemoteDesktop" EntityType="Self.TBLRemoteDesktop" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_TBLCustomerVdsList_TBLRemoteDesktop" Association="Self.FK_TBLCustomerVdsList_TBLRemoteDesktop">
-      <End Role="TBLRemoteDesktop" EntitySet="TBLRemoteDesktop" />
-      <End Role="TBLCustomerVdsList" EntitySet="TBLCustomerVdsList" />
-    </AssociationSet>
   </EntityContainer>
 </Schema>

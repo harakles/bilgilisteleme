@@ -1,7 +1,4 @@
 ﻿@using BilgiListeleme.Models
-@using PagedList
-@using PagedList.Mvc
-@model PagedList.IPagedList<TBLRemoteDesktop>
 @{
     ViewBag.Title = "RemoteDesk";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -17,20 +14,24 @@
             <th scope="col">TeamViewer Şifre</th>
             <th scope="col">AnyDesk</th>
             <th scope="col">AnyDesk Şifre</th>
+            <th scope="col">NotLar</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var data in Model)
+        @foreach (var x in Model)
         {
             <tr>
-                <th scope="row">@data.Id</th>
-                <td>@data.</td>
-                <td>@data.TeamViewer</td>
-                <td>@data.TeamViewerPw</td>
-                <td>@data.AnyDesk</td>
-                <td>@data.AnyDeskPw</td>
+                <th scope="row">@x.Id</th>
+                <td>@x.Sirketİsmi</td>
+                <td>@x.TeamViewer</td>
+                <td>@x.TeamViewerPw</td>
+                <td>@x.AnyDesk</td>
+                <td>@x.AnyDeskPw</td>
+                <td>@x.Notes</td>
+
             </tr>
         }
     </tbody>
 </table>
+
 

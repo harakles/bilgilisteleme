@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DBBilgiListelemeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DBBilgiListelemeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -32,42 +32,18 @@
           <Property Name="Vdsİp" Type="nvarchar(max)" />
           <Property Name="VdsName" Type="nvarchar(max)" />
           <Property Name="VdsPassword" Type="nvarchar(max)" />
-          <Property Name="RemoteDesktopId" Type="int" />
-        </EntityType>
-        <EntityType Name="TBLRemoteDesktop">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="AnyDesk" Type="nvarchar(max)" />
-          <Property Name="AnyDeskPw" Type="nvarchar(max)" />
           <Property Name="TeamViewer" Type="nvarchar(max)" />
           <Property Name="TeamViewerPw" Type="nvarchar(max)" />
+          <Property Name="AnyDesk" Type="nvarchar(max)" />
+          <Property Name="AnyDeskPw" Type="nvarchar(max)" />
+          <Property Name="Notes" Type="nvarchar(max)" />
         </EntityType>
-        <Association Name="FK_TBLCustomerVdsList_TBLRemoteDesktop">
-          <End Role="TBLRemoteDesktop" Type="Self.TBLRemoteDesktop" Multiplicity="0..1" />
-          <End Role="TBLCustomerVdsList" Type="Self.TBLCustomerVdsList" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TBLRemoteDesktop">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="TBLCustomerVdsList">
-              <PropertyRef Name="RemoteDesktopId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="DBBilgiListelemeModelStoreContainer">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBLAdmin" EntityType="Self.TBLAdmin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBLCustomerVdsList" EntityType="Self.TBLCustomerVdsList" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TBLRemoteDesktop" EntityType="Self.TBLRemoteDesktop" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_TBLCustomerVdsList_TBLRemoteDesktop" Association="Self.FK_TBLCustomerVdsList_TBLRemoteDesktop">
-            <End Role="TBLRemoteDesktop" EntitySet="TBLRemoteDesktop" />
-            <End Role="TBLCustomerVdsList" EntitySet="TBLCustomerVdsList" />
-          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DBBilgiListelemeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -98,41 +74,16 @@
           <Property Name="Vdsİp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="VdsName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="VdsPassword" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="RemoteDesktopId" Type="Int32" />
-          <NavigationProperty Name="TBLRemoteDesktop" Relationship="Self.FK_TBLCustomerVdsList_TBLRemoteDesktop" FromRole="TBLCustomerVdsList" ToRole="TBLRemoteDesktop" />
-        </EntityType>
-        <EntityType Name="TBLRemoteDesktop">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="AnyDesk" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="AnyDeskPw" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="TeamViewer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="TeamViewerPw" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="TBLCustomerVdsList" Relationship="Self.FK_TBLCustomerVdsList_TBLRemoteDesktop" FromRole="TBLRemoteDesktop" ToRole="TBLCustomerVdsList" />
+          <Property Name="AnyDesk" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AnyDeskPw" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
-        <Association Name="FK_TBLCustomerVdsList_TBLRemoteDesktop">
-          <End Role="TBLRemoteDesktop" Type="Self.TBLRemoteDesktop" Multiplicity="0..1" />
-          <End Role="TBLCustomerVdsList" Type="Self.TBLCustomerVdsList" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TBLRemoteDesktop">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="TBLCustomerVdsList">
-              <PropertyRef Name="RemoteDesktopId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="DBBilgiListelemeEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="TBLAdmin" EntityType="Self.TBLAdmin" />
           <EntitySet Name="TBLCustomerVdsList" EntityType="Self.TBLCustomerVdsList" />
-          <EntitySet Name="TBLRemoteDesktop" EntityType="Self.TBLRemoteDesktop" />
-          <AssociationSet Name="FK_TBLCustomerVdsList_TBLRemoteDesktop" Association="Self.FK_TBLCustomerVdsList_TBLRemoteDesktop">
-            <End Role="TBLRemoteDesktop" EntitySet="TBLRemoteDesktop" />
-            <End Role="TBLCustomerVdsList" EntitySet="TBLCustomerVdsList" />
-          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -163,23 +114,16 @@
           <EntitySetMapping Name="TBLCustomerVdsList">
             <EntityTypeMapping TypeName="DBBilgiListelemeModel.TBLCustomerVdsList">
               <MappingFragment StoreEntitySet="TBLCustomerVdsList">
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Sirketİsmi" ColumnName="Sirketİsmi" />
                 <ScalarProperty Name="Vdsİp" ColumnName="Vdsİp" />
                 <ScalarProperty Name="VdsName" ColumnName="VdsName" />
                 <ScalarProperty Name="VdsPassword" ColumnName="VdsPassword" />
-                <ScalarProperty Name="RemoteDesktopId" ColumnName="RemoteDesktopId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TBLRemoteDesktop">
-            <EntityTypeMapping TypeName="DBBilgiListelemeModel.TBLRemoteDesktop">
-              <MappingFragment StoreEntitySet="TBLRemoteDesktop">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="AnyDesk" ColumnName="AnyDesk" />
-                <ScalarProperty Name="AnyDeskPw" ColumnName="AnyDeskPw" />
                 <ScalarProperty Name="TeamViewer" ColumnName="TeamViewer" />
                 <ScalarProperty Name="TeamViewerPw" ColumnName="TeamViewerPw" />
+                <ScalarProperty Name="AnyDesk" ColumnName="AnyDesk" />
+                <ScalarProperty Name="AnyDeskPw" ColumnName="AnyDeskPw" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

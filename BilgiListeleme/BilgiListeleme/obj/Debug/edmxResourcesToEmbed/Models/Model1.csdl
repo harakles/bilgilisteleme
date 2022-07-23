@@ -27,40 +27,15 @@
     <Property Name="Vdsİp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="VdsName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="VdsPassword" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="RemoteDesktopId" Type="Int32" />
-    <NavigationProperty Name="TBLRemoteDesktop" Relationship="Self.FK_TBLCustomerVdsList_TBLRemoteDesktop" FromRole="TBLCustomerVdsList" ToRole="TBLRemoteDesktop" />
-  </EntityType>
-  <EntityType Name="TBLRemoteDesktop">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="AnyDesk" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="AnyDeskPw" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="TeamViewer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="TeamViewerPw" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="TBLCustomerVdsList" Relationship="Self.FK_TBLCustomerVdsList_TBLRemoteDesktop" FromRole="TBLRemoteDesktop" ToRole="TBLCustomerVdsList" />
+    <Property Name="AnyDesk" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AnyDeskPw" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
-  <Association Name="FK_TBLCustomerVdsList_TBLRemoteDesktop">
-    <End Role="TBLRemoteDesktop" Type="Self.TBLRemoteDesktop" Multiplicity="0..1" />
-    <End Role="TBLCustomerVdsList" Type="Self.TBLCustomerVdsList" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TBLRemoteDesktop">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="TBLCustomerVdsList">
-        <PropertyRef Name="RemoteDesktopId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="DBBilgiListelemeEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <EntitySet Name="TBLAdmin" EntityType="Self.TBLAdmin" />
     <EntitySet Name="TBLCustomerVdsList" EntityType="Self.TBLCustomerVdsList" />
-    <EntitySet Name="TBLRemoteDesktop" EntityType="Self.TBLRemoteDesktop" />
-    <AssociationSet Name="FK_TBLCustomerVdsList_TBLRemoteDesktop" Association="Self.FK_TBLCustomerVdsList_TBLRemoteDesktop">
-      <End Role="TBLRemoteDesktop" EntitySet="TBLRemoteDesktop" />
-      <End Role="TBLCustomerVdsList" EntitySet="TBLCustomerVdsList" />
-    </AssociationSet>
   </EntityContainer>
 </Schema>
