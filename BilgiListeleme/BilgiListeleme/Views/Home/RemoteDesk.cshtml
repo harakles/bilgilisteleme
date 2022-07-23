@@ -1,0 +1,36 @@
+﻿@using BilgiListeleme.Models
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<TBLRemoteDesktop>
+@{
+    ViewBag.Title = "RemoteDesk";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>RemoteDesktop List</h2>
+<table class="table caption-top">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Şirket İsmi</th>
+            <th scope="col">TeamViewer</th>
+            <th scope="col">TeamViewer Şifre</th>
+            <th scope="col">AnyDesk</th>
+            <th scope="col">AnyDesk Şifre</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var data in Model)
+        {
+            <tr>
+                <th scope="row">@data.Id</th>
+                <td>@data.</td>
+                <td>@data.TeamViewer</td>
+                <td>@data.TeamViewerPw</td>
+                <td>@data.AnyDesk</td>
+                <td>@data.AnyDeskPw</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

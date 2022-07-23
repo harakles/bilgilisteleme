@@ -5,22 +5,30 @@
 @{
     ViewBag.Title = "Admin Login Page";
 }
-<div>
-    <label for="exampleDataList" class="form-label" style="background-color:#808080">
-        @using (Html.BeginForm("Index", "", FormMethod.Get))
-        {
-            <b>veriyi Giriniz: &nbsp; </b> @Html.TextBox("p")
-            <input type="submit" value="Ara" />}
+<div class="container">
+    <h2>Cats Müşteri Paneli</h2>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div>
+                <br><br><br>
+                <div>
+                    <label for="exampleDataList" class="form-label">
+                        @using (Html.BeginForm("Index", "", FormMethod.Get))
+                        {
+                            <b>Data Giriniz: &nbsp; </b> @Html.TextBox("p")
+                            <input type="submit" value="Ara" />
+                            @*<div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-eye-open"></i></span>
+                <input id="Ara" type="text" class="form-control" name="Ara" value="" placeholder="Değeri Giriniz">
+            </div>*@
+                        }
+                    </label>
+                </div>
+                <br><br><br />
 
-        @foreach (var data in Model)
-        {
-            <datalist id="datalistOptions">
-
-                <option value="@data.Sirketİsmi">
-
-            </datalist>
-        }
-    </label>
+            </div>
+        </div>
+    </div>
 </div>
 
 <table class="table caption-top">
@@ -44,7 +52,7 @@
                 <td>@data.Vdsİp</td>
                 <td>@data.VdsName</td>
                 <td>@data.VdsPassword</td>
-                <td><a href="/UzakDesktop/Index/@data.Id" class="btn btn-primary" type="button">Uzak Masaüstü</a></td>
+                <td><a href="/Home/RemoteDesk/@data.RemoteDesktopId" class="btn btn-primary" type="button">Uzak Masaüstü</a></td>
                 <td><a href="/UzakDesktop/Sil/@data.Id" class="btn btn-danger" type="button">Sil</a></td>
             </tr>
         }

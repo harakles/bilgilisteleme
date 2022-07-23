@@ -11,9 +11,10 @@ namespace BilgiListeleme.Controllers
 {
     public class HomeController : Controller
     {
-        DBBilgiListelemeEntities db = new DBBilgiListelemeEntities();
-        public ActionResult Index(int sayfa ,string p)
+        DBBilgiListelemeEntities1 db = new DBBilgiListelemeEntities1();
+        public ActionResult Index(string p, int sayfa = 1)
         {
+            
             var Datalar = from k in db.TBLCustomerVdsList select k;
             if (!string.IsNullOrEmpty(p))
             {
@@ -25,6 +26,11 @@ namespace BilgiListeleme.Controllers
             //var datas = db.TBLCustomerVdsList.ToList().ToPagedList(sayfa, 8);
             //return View(datas);
         }
+        public ActionResult RemoteDesk(TBLRemoteDesktop c)
+        {
+            var yks = db.TBLRemoteDesktop.ToList();
 
+            return View(yks);
+        }
     }
 }

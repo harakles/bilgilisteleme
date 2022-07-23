@@ -53,7 +53,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="DBBilgiListelemeEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="DBBilgiListelemeEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <EntitySet Name="TBLAdmin" EntityType="Self.TBLAdmin" />
     <EntitySet Name="TBLCustomerVdsList" EntityType="Self.TBLCustomerVdsList" />

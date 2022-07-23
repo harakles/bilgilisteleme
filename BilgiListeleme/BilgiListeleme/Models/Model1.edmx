@@ -124,7 +124,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DBBilgiListelemeEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DBBilgiListelemeEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="TBLAdmin" EntityType="Self.TBLAdmin" />
           <EntitySet Name="TBLCustomerVdsList" EntityType="Self.TBLCustomerVdsList" />
@@ -139,7 +139,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DBBilgiListelemeModelStoreContainer" CdmEntityContainer="DBBilgiListelemeEntities">
+        <EntityContainerMapping StorageEntityContainer="DBBilgiListelemeModelStoreContainer" CdmEntityContainer="DBBilgiListelemeEntities1">
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="DBBilgiListelemeModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">

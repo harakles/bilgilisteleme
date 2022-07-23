@@ -7,16 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BilgiListeleme.Models
+namespace BilgiListeleme
 {
+    using BilgiListeleme.Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DBBilgiListelemeEntities : DbContext
+    public partial class DBBilgiListelemeEntities1 : DbContext
     {
-        public DBBilgiListelemeEntities()
-            : base("name=DBBilgiListelemeEntities")
+        public DBBilgiListelemeEntities1()
+            : base("name=DBBilgiListelemeEntities1")
         {
         }
     
