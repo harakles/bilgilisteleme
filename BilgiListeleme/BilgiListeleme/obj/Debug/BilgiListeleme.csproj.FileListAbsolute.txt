@@ -167,8 +167,8 @@ C:\Users\musta\Desktop\proje\bilgilisteleme\BilgiListeleme\BilgiListeleme\bin\Sy
 C:\Users\musta\Desktop\proje\bilgilisteleme\BilgiListeleme\BilgiListeleme\bin\Newtonsoft.Json.xml
 C:\Users\musta\Desktop\proje\bilgilisteleme\BilgiListeleme\BilgiListeleme\bin\Antlr3.Runtime.pdb
 C:\Users\musta\Desktop\proje\bilgilisteleme\BilgiListeleme\BilgiListeleme\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\musta\Desktop\proje\bilgilisteleme\BilgiListeleme\BilgiListeleme\obj\Debug\BilgiListeleme.csproj.AssemblyReference.cache
 C:\Users\musta\Desktop\proje\bilgilisteleme\BilgiListeleme\BilgiListeleme\obj\Debug\BilgiListeleme.csproj.CoreCompileInputs.cache
 C:\Users\musta\Desktop\proje\bilgilisteleme\BilgiListeleme\BilgiListeleme\obj\Debug\BilgiListeleme.csproj.CopyComplete
 C:\Users\musta\Desktop\proje\bilgilisteleme\BilgiListeleme\BilgiListeleme\obj\Debug\BilgiListeleme.dll
 C:\Users\musta\Desktop\proje\bilgilisteleme\BilgiListeleme\BilgiListeleme\obj\Debug\BilgiListeleme.pdb
+C:\Users\musta\Desktop\proje\bilgilisteleme\BilgiListeleme\BilgiListeleme\obj\Debug\BilgiListeleme.csproj.AssemblyReference.cache

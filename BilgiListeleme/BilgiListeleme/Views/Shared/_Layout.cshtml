@@ -6,35 +6,52 @@
     <title>@ViewBag.Title - Cats Bilişim</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+.navbar {
+  width: 100%;
+  background-color: #a33d0a;
+  overflow: auto;
+}
+
+.navbar a {
+  float: left  ;
+  padding: 13px;
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background-color: #0961cc;
+}
+
+.active {
+  background-color: #04AA6D;
+}
+
+
+    </style>
+
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-            </div>
-        </div>
+    <div class="navbar">
+        <a class="active" href="/Home/Index/"><i class="fa fa-fw fa-home"></i> Home</a>
+        <a href="/TBLAdmins/Index/"><i class="fa fa-fw fa-user"></i>Admin</a>
+        <a href="#"><i class="glyphicon glyphicon-off"></i> </a>
     </div>
+
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p> Cats &copy; @DateTime.Now.Year </p>
-        </footer>
-    </div>
 
+    </div>
+    <footer>
+        <p>&copy;Copyright  @DateTime.Now.Year Cats Bilişim Hizmetleri A.Ş Tüm Hakları Saklıdır</p>
+    </footer>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

@@ -1,37 +1,96 @@
-﻿@using BilgiListeleme.Models
+﻿@model BilgiListeleme.Models.TBLCustomerVdsList
+
 @{
     ViewBag.Title = "RemoteDesk";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>RemoteDesktop List</h2>
-<table class="table caption-top">
-    <thead>
-        <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Şirket İsmi</th>
-            <th scope="col">TeamViewer</th>
-            <th scope="col">TeamViewer Şifre</th>
-            <th scope="col">AnyDesk</th>
-            <th scope="col">AnyDesk Şifre</th>
-            <th scope="col">NotLar</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var x in Model)
-        {
-            <tr>
-                <th scope="row">@x.Id</th>
-                <td>@x.Sirketİsmi</td>
-                <td>@x.TeamViewer</td>
-                <td>@x.TeamViewerPw</td>
-                <td>@x.AnyDesk</td>
-                <td>@x.AnyDeskPw</td>
-                <td>@x.Notes</td>
+<div class="container">
+    <h2>Cats Müşteri Paneli</h2>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            @using (Html.BeginForm("", "", FormMethod.Post))
+            {
 
-            </tr>
-        }
-    </tbody>
-</table>
+
+                <div class="form-group">
+                    <table class="table caption-top">
+                        <tr>
+
+
+                            <th scope="col">
+                                <label>Şirket Id</label>
+
+                            </th>
+                            <th scope="col">
+                                <label>Şirekt Adı</label>
+
+
+                            </th>
+                            <th scope="col">
+
+                                <label>TeamViewer</label>
+
+
+                            </th>
+                            <th scope="col">
+
+                                <label>TeamViewer Şifresi</label>
+
+
+                            </th>
+                            <th scope="col">
+
+                                <label>AnyDesk</label>
+
+
+                            </th>
+                            <th scope="col">
+                                <label>AnyDesk Şifrsi</label>
+
+                            </th>
+                            <th scope="col">
+                                <label>Notlar</label>
+
+                            </th>
+                            <th scope="col">
+                                <label>&nbsp;</label>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td scope="row">
+                                @Html.DisplayFor(y => y.Id, new { @class = "form-control" })
+                            </td>
+                            <td scope="row">
+                                @Html.DisplayFor(y => y.Sirketİsmi, new { @class = "form-control" })
+                            </td>
+                            <td scope="row">
+                                @Html.DisplayFor(y => y.TeamViewer, new { @class = "form-control" })
+                            </td>
+                            <td scope="row">
+                                @Html.DisplayFor(y => y.TeamViewerPw, new { @class = "form-control" })
+                            </td>
+                            <td scope="row">
+                                @Html.DisplayFor(y => y.AnyDesk, new { @class = "form-control" })
+                            </td>
+                            <td scope="row">
+                                @Html.DisplayFor(y => y.AnyDeskPw, new { @class = "form-control" })
+                            </td>
+                            <td scope="row">
+                                @Html.DisplayFor(y => y.Notes, new { @class = "form-control" })
+                            </td>
+                            <td scope="row">
+                                <a class="btn btn-primary" href="/Home/Index">Geri Dön</a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+            }
+        </div>
+    </div>
+</div>
+
+
 
 

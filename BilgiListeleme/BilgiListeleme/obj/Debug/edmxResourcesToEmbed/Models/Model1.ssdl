@@ -14,7 +14,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="AdminUserName" Type="nvarchar(max)" />
     <Property Name="AdminPw" Type="nvarchar(max)" />
   </EntityType>
