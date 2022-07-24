@@ -3,10 +3,6 @@
     Layout = null;
 }
 
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
--->
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -28,52 +24,53 @@ Author URL: http://w3layouts.com
 
 <body>
     <div class="signinform">
-        <h1>Cats Arayüz</h1>
         <!-- container -->
         <div class="container">
             <!-- main content -->
             <div class="w3l-form-info">
                 <div class="w3_info">
                     <h2>Giriş Yap</h2>
-                    @using (Html.BeginForm("GirisYap", "Guvenlik", FormMethod.Post)) {
-                    <div class="input-group">
-                        <span><i class="fas fa-user" aria-hidden="true"></i></span>
-                        <input type="text" placeholder="Kullanıcı Adını Giriniz" required=""name="AdminUserName">
-                    </div>
-                    <div class="input-group">
-                        <span><i class="fas fa-key" aria-hidden="true"></i></span>
-                        <input type="Password" placeholder="Şifre" required="" name="AdminPw">
-                    </div>
-                    <div class="form-row bottom">
-                        <div class="form-check">
-                            <input type="checkbox" id="remenber" name="remenber" value="remenber">
-                            <label for="remenber"> Beni Hatırla?</label>
+                    @using (Html.BeginForm("GirisYap", "Guvenlik", FormMethod.Post))
+                    {
+                        <div class="input-group">
+                            <span><i class="fas fa-user" aria-hidden="true"></i></span>
+                            <input type="email" placeholder="Kullanıcı Adını Giriniz" required="" name="AdminUserName">
                         </div>
-                        <a href="#url" class="forgot">Şifremi Unuttum?</a>
-                    </div>
-                    <button class="btn btn-primary btn-block" type="button">Giriş Yap</button>
+                        <div class="input-group">
+                            <span><i class="fas fa-key" aria-hidden="true"></i></span>
+                            <input type="Password" placeholder="Şifre" required="" name="AdminPw">
+                        </div>
+                        <div class="form-row bottom">
+                            <div class="form-check">
+                                <input type="checkbox" id="remenber" name="remenber" value="remenber">
+                                <label for="remenber"> Beni Hatırla?</label>
+                            </div>
+                            <a href="#url" class="forgot">Şifremi Unuttum?</a>
+                        </div>
+                        <button class="btn btn-primary btn-block" type="button">Giriş Yap</button>
+                        
                     }
                     @*<p class="continue"><span>or Login with</span></p>
-                    <div class="social-login">
-                        <a href="#facebook">
-                            <div class="facebook">
-                                <span class="fab fa-facebook-f" aria-hidden="true"></span>
+                        <div class="social-login">
+                            <a href="#facebook">
+                                <div class="facebook">
+                                    <span class="fab fa-facebook-f" aria-hidden="true"></span>
 
-                            </div>
-                        </a>
-                        <a href="#twitter">
-                            <div class="twitter">
-                                <span class="fab fa-twitter" aria-hidden="true"></span>
-                            </div>
-                        </a>
-                        <a href="#google">
-                            <div class="google">
-                                <span class="fab fa-google" aria-hidden="true"></span>
-                            </div>
-                        </a>
-                    </div>
-                    <p class="account">Don't have an account? <a href="#signup">Sign up</a></p>
-                </div>*@
+                                </div>
+                            </a>
+                            <a href="#twitter">
+                                <div class="twitter">
+                                    <span class="fab fa-twitter" aria-hidden="true"></span>
+                                </div>
+                            </a>
+                            <a href="#google">
+                                <div class="google">
+                                    <span class="fab fa-google" aria-hidden="true"></span>
+                                </div>
+                            </a>
+                        </div>
+                        <p class="account">Don't have an account? <a href="#signup">Sign up</a></p>*@
+                </div>
             </div>
             <!-- //main content -->
         </div>
@@ -82,7 +79,7 @@ Author URL: http://w3layouts.com
         <div class="footer">
             <p>
                 &copy;Copyright 2022 Cats Bilişim Hizmetleri A.Ş Tüm Hakları Saklıdır <a href="https://www.catsbilisim.net/"
-                                                                                                                target="blank">Cats</a>
+                                                                                         target="blank">Cats</a>
             </p>
         </div>
         <!-- footer -->
