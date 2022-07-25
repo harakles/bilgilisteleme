@@ -30,11 +30,11 @@
             <div class="w3l-form-info">
                 <div class="w3_info">
                     <h2>Giriş Yap</h2>
-                    @using (Html.BeginForm("GirisYap", "Guvenlik", FormMethod.Post))
+                    @using (Html.BeginForm("GirisYapp", "Guvenlik", FormMethod.Post))
                     {
                         <div class="input-group">
                             <span><i class="fas fa-user" aria-hidden="true"></i></span>
-                            <input type="email" placeholder="Kullanıcı Adını Giriniz" required="" name="AdminUserName">
+                            <input type="text" placeholder="Kullanıcı Adını Giriniz" required="" name="AdminUserName">
                         </div>
                         <div class="input-group">
                             <span><i class="fas fa-key" aria-hidden="true"></i></span>
@@ -47,7 +47,7 @@
                             </div>
                             <a href="#url" class="forgot">Şifremi Unuttum?</a>
                         </div>
-                        <button class="btn btn-primary btn-block" type="button">Giriş Yap</button>
+                        <button class="btn btn-primary btn-block" type="submit">Giriş Yap</button>
                         
                     }
                     @*<p class="continue"><span>or Login with</span></p>

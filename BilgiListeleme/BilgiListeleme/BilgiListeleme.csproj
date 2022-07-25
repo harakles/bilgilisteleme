@@ -134,6 +134,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\GuncelleController.cs" />
     <Compile Include="Controllers\GuvenlikController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -232,6 +233,7 @@
     <Content Include="starter\fonts\fontawesome-webfont.woff" />
     <Content Include="starter\fonts\fontawesome-webfont.woff2" />
     <Content Include="starter\fonts\FontAwesome.otf" />
+    <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

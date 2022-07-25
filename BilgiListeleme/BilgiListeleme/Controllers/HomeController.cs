@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
+using System.Web.Security;
 using PagedList.Mvc;
 
 namespace BilgiListeleme.Controllers
