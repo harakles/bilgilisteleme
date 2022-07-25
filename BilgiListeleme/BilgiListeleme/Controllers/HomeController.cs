@@ -35,6 +35,22 @@ namespace BilgiListeleme.Controllers
             
             return View(yks);
         }
-        
+        [HttpGet]
+        public ActionResult VeriEkle()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult VeriEkle(TBLCustomerVdsList p)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("VeriEkle");
+            }
+            db.TBLCustomerVdsList.Add(p);
+            db.SaveChanges();
+            return View();
+        }
+
     }
 }

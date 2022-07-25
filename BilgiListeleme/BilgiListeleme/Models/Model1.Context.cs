@@ -28,5 +28,6 @@ namespace BilgiListeleme.Models
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TBLAdmin> TBLAdmin { get; set; }
         public virtual DbSet<TBLCustomerVdsList> TBLCustomerVdsList { get; set; }
+        public virtual DbSet<TBLEkle> TBLEkle { get; set; }
     }
 }

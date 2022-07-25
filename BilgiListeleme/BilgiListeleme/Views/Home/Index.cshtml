@@ -3,36 +3,31 @@
 @using PagedList.Mvc
 @model PagedList.IPagedList<TBLCustomerVdsList>
 @{
-    ViewBag.Title = "Admin Login Page";
+    ViewBag.Title = " List of data";
 }
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 <div class="container">
     <h2>Cats Müşteri Paneli</h2>
-    <div class="panel panel-default">
-        <div class="panel-body">
-            <div>
-                <br><br>
+    <div style="margin-left:900px;">
+        <div>
 
-                <br><div>
-                    Şirket İsmi:
-                </div>
-                <div>
-                    <label for="exampleDataList" class="form-label">
-                        @using (Html.BeginForm("Index", "", FormMethod.Get))
-                        {
-                            <div class="input-group">
+            <label for="exampleDataList" class="form-label">
 
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-eye-open">@Html.TextBox("p")</i></span> &nbsp;
+                @using (Html.BeginForm("Index", "", FormMethod.Get))
+                {
+                    <div class="input-group">
 
-                            </div>
-                        }
-                    </label>
-                </div>
-                <br><br><br />
+                        <span class="input-group" style="background-color:#ffffff"><i class="glyphicon glyphicon-filter">@Html.TextBox("p")</i></span> &nbsp;
 
-            </div>
+                    </div>
+                }
+            </label>
         </div>
+
+
     </div>
 </div>
+
 
 <table class="table caption-top">
     <thead>
@@ -61,6 +56,20 @@
         }
     </tbody>
 </table>
-@Html.PagedListPager((IPagedList)Model, Sayfa => Url.Action("Index", new { Sayfa }))
+<table>
+    <tr>
+        <td>
+            @Html.PagedListPager((IPagedList)Model, Sayfa => Url.Action("Index", new { Sayfa }))
+        </td>
+        <td>
+            @using (Html.BeginForm("VeriEkle", "Home", FormMethod.Post))
+            {
+                <button type="submit" class="btn btn-primary" style="margin-left:800px;">Ekle</button>
+            }
+        </td>
+    </tr>
+</table>
+
+
 
 

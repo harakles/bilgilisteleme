@@ -17,7 +17,7 @@ namespace BilgiListeleme.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult GirisYapp(TBLAdmin t)
+        public ActionResult GirisYap(TBLAdmin t)
         {
             var bilgiler = db.TBLAdmin.FirstOrDefault(x => x.AdminUserName == t.AdminUserName && x.AdminPw == t.AdminPw);
             if(bilgiler !=null)

@@ -1,0 +1,34 @@
+﻿@model BilgiListeleme.Models.TBLCustomerVdsList
+@{
+    ViewBag.Title = "VeriEkle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("VeriEkle", "Home", FormMethod.Post))
+{
+
+    <div class="container" style="width:300px;">
+        <div class="panel panel-default" style="width: 300px;">
+            <div class="panel-body">
+                <label>şirket Adı</label>
+                @Html.TextBoxFor(k => k.Sirketİsmi, new { @class = "form-control" })
+
+                <label>Kullanıcı Adı</label>
+                @Html.TextBoxFor(k => k.VdsName, new { @class = "form-control" })
+
+
+                <label>Vds Ip</label>
+                @Html.TextBoxFor(k => k.Vdsİp,new { @class = "form-control" })
+
+
+                <label>Vds Şifresi</label>
+                @Html.TextBoxFor(k => k.VdsPassword, new { @class = "form-control" })
+
+
+                <button class="btn btn-info">Ekle</button>
+            </div>
+        </div>
+    </div>
+}
+<input type="hidden" name="Durum" value="True" />
