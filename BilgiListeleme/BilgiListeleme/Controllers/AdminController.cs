@@ -9,7 +9,7 @@ namespace BilgiListeleme.Controllers
 {
     public class AdminController : Controller
     {
-        DBBilgiListelemeEntities1 db = new DBBilgiListelemeEntities1();           
+        DBBilgiListelemeEntities2 db = new DBBilgiListelemeEntities2();           
         // GET: Admin
         public ActionResult Index()
         {

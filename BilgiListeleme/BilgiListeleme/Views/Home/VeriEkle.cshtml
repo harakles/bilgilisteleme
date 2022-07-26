@@ -1,36 +1,128 @@
 ﻿@model BilgiListeleme.Models.TBLCustomerVdsList
+@using BilgiListeleme.Models
 @{
     ViewBag.Title = "VeriEkle";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#myselection').on('change', function () {
+                var demovalue = $(this).val();
+                $("div.myDiv").hide();
+                $("#show" + demovalue).show();
+            });
+        });
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+</head>
 
 @using (Html.BeginForm("VeriEkle", "Home", FormMethod.Post))
 {
+    <table>
+        <tr>
+            <td>
+                <div class="container" style="width:300px;">
+                    <div class="panel panel-default" style="width: 300px;">
+                        <div class="panel-body">
+                            @Html.HiddenFor(k => k.Id, new { @class = "form-control" })
+                            <label>şirket Adı</label>
+                            @Html.TextBoxFor(k => k.Sirketİsmi, new { @class = "form-control" })
 
-    <div class="container" style="width:300px;">
-        <div class="panel panel-default" style="width: 300px;">
-            <div class="panel-body">
-                <label>şirket Adı</label>
-                @Html.TextBoxFor(k => k.Sirketİsmi, new { @class = "form-control" })
-
-                <label>Kullanıcı Adı</label>
-                @Html.TextBoxFor(k => k.VdsName, new { @class = "form-control" })
+                            <label>Kullanıcı Adı</label>
+                            @Html.TextBoxFor(k => k.VdsName, new { @class = "form-control" })
 
 
-                <label>Vds Ip</label>
-                @Html.TextBoxFor(k => k.Vdsİp, new { @class = "form-control" })
+                            <label>Vds Ip</label>
+                            @Html.TextBoxFor(k => k.Vdsİp, new { @class = "form-control" })
 
 
-                <label>Vds Şifresi</label>
-                @Html.TextBoxFor(k => k.VdsPassword, new { @class = "form-control" })
+                            <label>Vds Şifresi</label>
+                            @Html.TextBoxFor(k => k.VdsPassword, new { @class = "form-control" })
 
-                <label>Uzak Masaüstü Uygulamasını seçiniz</label>
-                @Html.DropDownListFor(k => k.TBLEkle.Id, (List<SelectListItem>)ViewBag.vre1,
-            new {@class = "form-control"})
-                <button class="btn btn-info">Ekle</button>
-            </div>
-        </div>
+                            <label>Uzak Masaüstü Uygulamasını seçiniz</label>
+                            <select id="myselection">
+                                <option selected="selected">--UzakMasaüstü Seçiniz--</option>
+                                <option value="One">Anydesk</option>
+                                <option value="Two">TeamViewer</option>
+                                <option value="Three">SplashTop</option>
+                            </select>
+
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div id="showOne" class="myDiv" style="margin-left:10px;">
+                    <div class="container" style="width:350px;">
+                        <div class="panel panel-default" style="width:300px;">
+                            <div class="panel-body">
+                                
+                                <br />
+                                <br />
+                                <label>AnyDesk Id</label>
+                                @Html.TextBoxFor(y => y.AnyDesk, new { @class = "form-control" })
+
+                                <label>AnyDesk Şifresi</label>
+                                @Html.TextBoxFor(y => y.AnyDeskPw, new { @class = "form-control" })
+
+                                <label>Notlar</label>
+                                @Html.TextAreaFor(y => y.Notes, new { @class = "form-control" })
+                                <br />
+                                <br />
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="showTwo" class="myDiv" style="margin-left:10px;">
+                    <div class="container" style="width:350px;">
+                        <div class="panel panel-default" style="width:300px;">
+                            <div class="panel-body">
+                                
+                                <br />
+                                <br />
+                                <label>TeamViewer </label>
+                                @Html.TextBoxFor(y => y.TeamViewer, new { @class = "form-control" })
+                                <label>TeamViewer Şifresi</label>
+                                @Html.TextBoxFor(y => y.TeamViewerPw, new { @class = "form-control" })
+                                <label>Notlar</label>
+                                @Html.TextAreaFor(y => y.Notes, new { @class = "form-control" })
+                                <br />
+                                <br />
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="showThree" class="myDiv" style="margin-left:10px;">
+                    <div class="container" style="width:350px;">
+                        <div class="panel panel-default" style="width:300px;">
+                            <div class="panel-body">
+                              
+                                <br />
+                                <br />
+                                <label>SplashTop </label>
+                                @Html.TextBoxFor(y => y.SplashTop, new { @class = "form-control" })
+                                <label>SplashTop Şifresi</label>
+                                @Html.TextBoxFor(y => y.SplashTopPw, new { @class = "form-control" })
+                                <label>Notlar</label>
+                                @Html.TextAreaFor(y => y.Notes, new { @class = "form-control" })
+                                <br />
+                                <br />
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <div>
+        <button style="margin-left:600px;" type="submit" class="btn btn-info">Ekle</button>
     </div>
 }
-<input type="hidden" name="Durum" value="True" />

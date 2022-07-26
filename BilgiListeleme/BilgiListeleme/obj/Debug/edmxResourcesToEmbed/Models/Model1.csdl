@@ -14,7 +14,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="AdminUserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="AdminPw" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
@@ -27,24 +27,16 @@
     <Property Name="Vdsİp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="VdsName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="VdsPassword" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="TeamViewer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="TeamViewerPw" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="AnyDesk" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="AnyDeskPw" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TeamViewer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TeamViewerPw" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SplashTop" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SplashTopPw" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="RemoteDeskId" Type="Int32" />
     <NavigationProperty Name="TBLEkle" Relationship="DBBilgiListelemeModel.FK_TBLCustomerVdsList_TBLEkle" FromRole="TBLCustomerVdsList" ToRole="TBLEkle" />
   </EntityType>
-  <EntityContainer Name="DBBilgiListelemeEntities1" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-    <EntitySet Name="TBLAdmin" EntityType="Self.TBLAdmin" />
-    <EntitySet Name="TBLCustomerVdsList" EntityType="Self.TBLCustomerVdsList" />
-    <EntitySet Name="TBLEkle" EntityType="DBBilgiListelemeModel.TBLEkle" />
-    <AssociationSet Name="FK_TBLCustomerVdsList_TBLEkle" Association="DBBilgiListelemeModel.FK_TBLCustomerVdsList_TBLEkle">
-      <End Role="TBLEkle" EntitySet="TBLEkle" />
-      <End Role="TBLCustomerVdsList" EntitySet="TBLCustomerVdsList" />
-    </AssociationSet>
-  </EntityContainer>
   <EntityType Name="TBLEkle">
     <Key>
       <PropertyRef Name="Id" />
@@ -54,6 +46,57 @@
     <Property Name="sil" Type="Boolean" />
     <NavigationProperty Name="TBLCustomerVdsList" Relationship="DBBilgiListelemeModel.FK_TBLCustomerVdsList_TBLEkle" FromRole="TBLEkle" ToRole="TBLCustomerVdsList" />
   </EntityType>
+  <EntityContainer Name="DBBilgiListelemeEntities2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="TBLAdmin" EntityType="Self.TBLAdmin" />
+    <EntitySet Name="TBLCustomerVdsList" EntityType="Self.TBLCustomerVdsList" />
+    <EntitySet Name="TBLEkle" EntityType="Self.TBLEkle" />
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(DBBilgiListelemeModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(DBBilgiListelemeModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <AssociationSet Name="FK_TBLCustomerVdsList_TBLEkle" Association="DBBilgiListelemeModel.FK_TBLCustomerVdsList_TBLEkle">
+      <End Role="TBLEkle" EntitySet="TBLEkle" />
+      <End Role="TBLCustomerVdsList" EntitySet="TBLCustomerVdsList" />
+    </AssociationSet>
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
   <Association Name="FK_TBLCustomerVdsList_TBLEkle">
     <End Type="DBBilgiListelemeModel.TBLEkle" Role="TBLEkle" Multiplicity="0..1" />
     <End Type="DBBilgiListelemeModel.TBLCustomerVdsList" Role="TBLCustomerVdsList" Multiplicity="*" />

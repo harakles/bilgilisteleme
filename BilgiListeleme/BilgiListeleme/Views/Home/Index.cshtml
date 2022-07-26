@@ -62,10 +62,7 @@
             @Html.PagedListPager((IPagedList)Model, Sayfa => Url.Action("Index", new { Sayfa }))
         </td>
         <td>
-            @using (Html.BeginForm("VeriEkle", "Home", FormMethod.Post))
-            {
-                <button type="submit" class="btn btn-primary" style="margin-left:800px;">Ekle</button>
-            }
+            <a style="margin-left:800px;" href="/Home/VeriEkle/" class="btn btn-primary">Ekle</a>
         </td>
     </tr>
 </table>

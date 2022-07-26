@@ -11,7 +11,7 @@ namespace BilgiListeleme.Controllers
 {
     public class GuncelleController : Controller
     {
-        DBBilgiListelemeEntities1 db = new DBBilgiListelemeEntities1();
+        DBBilgiListelemeEntities2 db = new DBBilgiListelemeEntities2();
         public ActionResult Index(int Id)
         {
             var hks = db.TBLCustomerVdsList.Find(Id);
@@ -28,6 +28,7 @@ namespace BilgiListeleme.Controllers
             vgn.TeamViewerPw = c.TeamViewerPw;
             vgn.AnyDesk = c.AnyDesk;
             vgn.AnyDeskPw = c.AnyDeskPw;
+            vgn.Notes = c.Notes;
             db.SaveChanges();
             return View("Index");
         }
