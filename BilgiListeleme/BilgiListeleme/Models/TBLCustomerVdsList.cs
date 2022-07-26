@@ -24,5 +24,8 @@ namespace BilgiListeleme.Models
         public string AnyDesk { get; set; }
         public string AnyDeskPw { get; set; }
         public string Notes { get; set; }
+        public Nullable<int> RemoteDeskId { get; set; }
+    
+        public virtual TBLEkle TBLEkle { get; set; }
     }
 }

@@ -245,6 +245,9 @@
     <Content Include="starter\fonts\FontAwesome.otf" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Home\VeriEkle.cshtml" />
+    <Content Include="Views\Home\RmdGetirAnyDesk.cshtml" />
+    <Content Include="Views\Home\RmdGetirTeamViewer.cshtml" />
+    <Content Include="Views\Home\RmdGetirSplashTop.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

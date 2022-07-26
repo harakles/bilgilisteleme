@@ -24,6 +24,7 @@
     <EntitySetMapping Name="TBLCustomerVdsList">
       <EntityTypeMapping TypeName="DBBilgiListelemeModel.TBLCustomerVdsList">
         <MappingFragment StoreEntitySet="TBLCustomerVdsList">
+          <ScalarProperty Name="RemoteDeskId" ColumnName="RemoteDeskId" />
           <ScalarProperty Name="Notes" ColumnName="Notes" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Sirketİsmi" ColumnName="Sirketİsmi" />
@@ -34,6 +35,15 @@
           <ScalarProperty Name="TeamViewerPw" ColumnName="TeamViewerPw" />
           <ScalarProperty Name="AnyDesk" ColumnName="AnyDesk" />
           <ScalarProperty Name="AnyDeskPw" ColumnName="AnyDeskPw" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLEkle">
+      <EntityTypeMapping TypeName="DBBilgiListelemeModel.TBLEkle">
+        <MappingFragment StoreEntitySet="TBLEkle">
+          <ScalarProperty Name="sil" ColumnName="sil" />
+          <ScalarProperty Name="RemoteDesktopApp" ColumnName="RemoteDesktopApp" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

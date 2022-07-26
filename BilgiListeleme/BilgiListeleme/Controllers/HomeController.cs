@@ -38,19 +38,37 @@ namespace BilgiListeleme.Controllers
         [HttpGet]
         public ActionResult VeriEkle()
         {
+            List<SelectListItem> vre1 = (from i in db.TBLEkle.ToList()
+                                        select new SelectListItem
+                                        {
+                                            Text = i.RemoteDesktopApp,
+                                            Value = i.Id.ToString(),
+                                        }).ToList();
+            ViewBag.vre1 = vre1;
             return View();
         }
         [HttpPost]
         public ActionResult VeriEkle(TBLCustomerVdsList p)
         {
-            if (!ModelState.IsValid)
-            {
-                return View("VeriEkle");
-            }
+            var rmd = db.TBLEkle.Where(k => k.Id == p.TBLEkle.Id).FirstOrDefault();
+            p.TBLEkle = rmd;
             db.TBLCustomerVdsList.Add(p);
             db.SaveChanges();
+            return RedirectToAction("suzek/Home");
+        }
+        public ActionResult Suzek()
+        {
+            return RedirectToAction("");
+        }
+        public ActionResult RmdGetir(int Id)
+        {
+            var rmg = db.TBLCustomerVdsList.Find(Id);
+            return View(rmg);
+            
+        }
+        public ActionResult RmdGuncelle(TBLCustomerVdsList c)
+        {
             return View();
         }
-
     }
 }

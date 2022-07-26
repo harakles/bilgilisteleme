@@ -32,10 +32,38 @@
     <Property Name="AnyDesk" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="AnyDeskPw" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="RemoteDeskId" Type="Int32" />
+    <NavigationProperty Name="TBLEkle" Relationship="DBBilgiListelemeModel.FK_TBLCustomerVdsList_TBLEkle" FromRole="TBLCustomerVdsList" ToRole="TBLEkle" />
   </EntityType>
   <EntityContainer Name="DBBilgiListelemeEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <EntitySet Name="TBLAdmin" EntityType="Self.TBLAdmin" />
     <EntitySet Name="TBLCustomerVdsList" EntityType="Self.TBLCustomerVdsList" />
+    <EntitySet Name="TBLEkle" EntityType="DBBilgiListelemeModel.TBLEkle" />
+    <AssociationSet Name="FK_TBLCustomerVdsList_TBLEkle" Association="DBBilgiListelemeModel.FK_TBLCustomerVdsList_TBLEkle">
+      <End Role="TBLEkle" EntitySet="TBLEkle" />
+      <End Role="TBLCustomerVdsList" EntitySet="TBLCustomerVdsList" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="TBLEkle">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RemoteDesktopApp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="sil" Type="Boolean" />
+    <NavigationProperty Name="TBLCustomerVdsList" Relationship="DBBilgiListelemeModel.FK_TBLCustomerVdsList_TBLEkle" FromRole="TBLEkle" ToRole="TBLCustomerVdsList" />
+  </EntityType>
+  <Association Name="FK_TBLCustomerVdsList_TBLEkle">
+    <End Type="DBBilgiListelemeModel.TBLEkle" Role="TBLEkle" Multiplicity="0..1" />
+    <End Type="DBBilgiListelemeModel.TBLCustomerVdsList" Role="TBLCustomerVdsList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLEkle">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TBLCustomerVdsList">
+        <PropertyRef Name="RemoteDeskId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

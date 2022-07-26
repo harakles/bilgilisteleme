@@ -32,11 +32,12 @@
           <Property Name="Vdsİp" Type="nvarchar(max)" />
           <Property Name="VdsName" Type="nvarchar(max)" />
           <Property Name="VdsPassword" Type="nvarchar(max)" />
-          <Property Name="AnyDesk" Type="nvarchar(max)" />
-          <Property Name="AnyDeskPw" Type="nvarchar(max)" />
           <Property Name="TeamViewer" Type="nvarchar(max)" />
           <Property Name="TeamViewerPw" Type="nvarchar(max)" />
+          <Property Name="AnyDesk" Type="nvarchar(max)" />
+          <Property Name="AnyDeskPw" Type="nvarchar(max)" />
           <Property Name="Notes" Type="nvarchar(max)" />
+          <Property Name="RemoteDeskId" Type="int" />
         </EntityType>
         <EntityType Name="TBLEkle">
           <Key>
@@ -46,11 +47,27 @@
           <Property Name="RemoteDesktopApp" Type="nvarchar(max)" />
           <Property Name="sil" Type="bit" />
         </EntityType>
+        <Association Name="FK_TBLCustomerVdsList_TBLEkle">
+          <End Role="TBLEkle" Type="Self.TBLEkle" Multiplicity="0..1" />
+          <End Role="TBLCustomerVdsList" Type="Self.TBLCustomerVdsList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLEkle">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TBLCustomerVdsList">
+              <PropertyRef Name="RemoteDeskId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="DBBilgiListelemeModelStoreContainer">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBLAdmin" EntityType="Self.TBLAdmin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBLCustomerVdsList" EntityType="Self.TBLCustomerVdsList" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TBLEkle" EntityType="Self.TBLEkle" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TBLCustomerVdsList_TBLEkle" Association="Self.FK_TBLCustomerVdsList_TBLEkle">
+            <End Role="TBLEkle" EntitySet="TBLEkle" />
+            <End Role="TBLCustomerVdsList" EntitySet="TBLCustomerVdsList" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -88,12 +105,18 @@
           <Property Name="AnyDesk" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="AnyDeskPw" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RemoteDeskId" Type="Int32" />
+          <NavigationProperty Name="TBLEkle" Relationship="DBBilgiListelemeModel.FK_TBLCustomerVdsList_TBLEkle" FromRole="TBLCustomerVdsList" ToRole="TBLEkle" />
         </EntityType>
         <EntityContainer Name="DBBilgiListelemeEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="TBLAdmin" EntityType="Self.TBLAdmin" />
           <EntitySet Name="TBLCustomerVdsList" EntityType="Self.TBLCustomerVdsList" />
           <EntitySet Name="TBLEkle" EntityType="DBBilgiListelemeModel.TBLEkle" />
+          <AssociationSet Name="FK_TBLCustomerVdsList_TBLEkle" Association="DBBilgiListelemeModel.FK_TBLCustomerVdsList_TBLEkle">
+            <End Role="TBLEkle" EntitySet="TBLEkle" />
+            <End Role="TBLCustomerVdsList" EntitySet="TBLCustomerVdsList" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="TBLEkle">
           <Key>
@@ -102,7 +125,20 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="RemoteDesktopApp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="sil" Type="Boolean" />
+          <NavigationProperty Name="TBLCustomerVdsList" Relationship="DBBilgiListelemeModel.FK_TBLCustomerVdsList_TBLEkle" FromRole="TBLEkle" ToRole="TBLCustomerVdsList" />
         </EntityType>
+        <Association Name="FK_TBLCustomerVdsList_TBLEkle">
+          <End Type="DBBilgiListelemeModel.TBLEkle" Role="TBLEkle" Multiplicity="0..1" />
+          <End Type="DBBilgiListelemeModel.TBLCustomerVdsList" Role="TBLCustomerVdsList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TBLEkle">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TBLCustomerVdsList">
+              <PropertyRef Name="RemoteDeskId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -132,6 +168,7 @@
           <EntitySetMapping Name="TBLCustomerVdsList">
             <EntityTypeMapping TypeName="DBBilgiListelemeModel.TBLCustomerVdsList">
               <MappingFragment StoreEntitySet="TBLCustomerVdsList">
+                <ScalarProperty Name="RemoteDeskId" ColumnName="RemoteDeskId" />
                 <ScalarProperty Name="Notes" ColumnName="Notes" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Sirketİsmi" ColumnName="Sirketİsmi" />

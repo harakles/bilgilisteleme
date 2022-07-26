@@ -19,13 +19,15 @@
 
 
                 <label>Vds Ip</label>
-                @Html.TextBoxFor(k => k.Vdsİp,new { @class = "form-control" })
+                @Html.TextBoxFor(k => k.Vdsİp, new { @class = "form-control" })
 
 
                 <label>Vds Şifresi</label>
                 @Html.TextBoxFor(k => k.VdsPassword, new { @class = "form-control" })
 
-
+                <label>Uzak Masaüstü Uygulamasını seçiniz</label>
+                @Html.DropDownListFor(k => k.TBLEkle.Id, (List<SelectListItem>)ViewBag.vre1,
+            new {@class = "form-control"})
                 <button class="btn btn-info">Ekle</button>
             </div>
         </div>
