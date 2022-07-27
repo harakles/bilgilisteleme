@@ -1,0 +1,181 @@
+﻿@model BilgiListeleme2.Models.TBLCustomerVdsList
+@using BilgiListeleme2.Models
+@{
+    ViewBag.Title = "VeriEkle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#myselection').on('change', function () {
+                var demovalue = $(this).val();
+                $("div.myDiv").hide();
+                $("#show" + demovalue).show();
+            });
+        });
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <style>
+        select {
+            /* styling */
+            background-color: white;
+            border: thin solid blue;
+            border-radius: 4px;
+            display: inline-block;
+            font: inherit;
+            line-height: 1.5em;
+            padding: 0.5em 3.5em 0.5em 1em;
+            /* reset */
+
+            margin: 0;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+        }
+
+
+            /* arrows */
+
+            select.classic {
+                background-image: linear-gradient(45deg, transparent 50%, blue 50%), linear-gradient(135deg, blue 50%, transparent 50%), linear-gradient(to right, skyblue, skyblue);
+                background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), 100% 0;
+                background-size: 5px 5px, 5px 5px, 2.5em 2.5em;
+                background-repeat: no-repeat;
+            }
+
+                select.classic:focus {
+                    background-image: linear-gradient(45deg, white 50%, transparent 50%), linear-gradient(135deg, transparent 50%, white 50%), linear-gradient(to right, gray, gray);
+                    background-position: calc(100% - 15px) 1em, calc(100% - 20px) 1em, 100% 0;
+                    background-size: 5px 5px, 5px 5px, 2.5em 2.5em;
+                    background-repeat: no-repeat;
+                    border-color: grey;
+                    outline: 0;
+                }
+    </style>
+</head>
+
+@using (Html.BeginForm("VeriEkle", "Home", FormMethod.Post))
+{
+    <table>
+        <tr>
+            <td>
+                <div class="container" style="width:300px;">
+                    <div class="panel panel-default" style="width: 300px;">
+                        <div class="panel-body">
+                            @Html.HiddenFor(k => k.Id, new { @class = "form-control" })
+                            <label>şirket Adı</label>
+                            @Html.TextBoxFor(k => k.Sirketİsmi, new { @class = "form-control" })
+
+                            <label>Kullanıcı Adı</label>
+                            @Html.TextBoxFor(k => k.VdsName, new { @class = "form-control" })
+
+
+                            <label>Vds Ip</label>
+                            @Html.TextBoxFor(k => k.Vdsİp, new { @class = "form-control" })
+
+
+                            <label>Vds Şifresi</label>
+                            @Html.TextBoxFor(k => k.VdsPassword, new { @class = "form-control" })
+
+                            <label>Uzak Masaüstü Uygulamasını seçiniz</label>
+
+                            <select id="myselection" class="classic">
+                                <option selected="selected">--UzakMasaüstü Seçiniz--</option>
+                                <option value="One">Anydesk</option>
+                                <option value="Two">TeamViewer</option>
+                                <option value="Three">SplashTop</option>
+                            </select>
+
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div id="showOne" class="myDiv" style="margin-left:10px;">
+                    <div class="container" style="width:350px;">
+                        <div class="panel panel-default" style="width:300px;">
+                            <div class="panel-body">
+
+                                <br />
+                                <br />
+                                <label>AnyDesk Id</label>
+                                @Html.TextBoxFor(y => y.AnyDesk, new { @class = "form-control" })
+
+                                <label>AnyDesk Şifresi</label>
+                                @Html.TextBoxFor(y => y.AnyDeskPw, new { @class = "form-control" })
+
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="showTwo" class="myDiv" style="margin-left:10px;">
+                    <div class="container" style="width:350px;">
+                        <div class="panel panel-default" style="width:300px;">
+                            <div class="panel-body">
+
+                                <br />
+                                <br />
+                                <label>TeamViewer </label>
+                                @Html.TextBoxFor(y => y.TeamViewer, new { @class = "form-control" })
+                                <label>TeamViewer Şifresi</label>
+                                @Html.TextBoxFor(y => y.TeamViewerPw, new { @class = "form-control" })
+
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="showThree" class="myDiv" style="margin-left:10px;">
+                    <div class="container" style="width:350px;">
+                        <div class="panel panel-default" style="width:300px;">
+                            <div class="panel-body">
+
+                                <br />
+                                <br />
+                                <label>SplashTop </label>
+                                @Html.TextBoxFor(y => y.SplashTop, new { @class = "form-control" })
+                                <label>SplashTop Şifresi</label>
+                                @Html.TextBoxFor(y => y.SplashTopPw, new { @class = "form-control" })
+
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div  style="margin-left:10px;">
+                    <div class="container" style="width:350px;">
+                        <div class="panel panel-default" style="width:300px;">
+                            <div class="panel-body">
+                                <label>Notlar</label>
+                                @Html.TextAreaFor(y => y.Notes, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <div>
+        <button style="margin-left:600px;" type="submit" class="btn btn-info">Ekle</button>
+    </div>
+}
