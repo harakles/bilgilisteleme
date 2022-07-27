@@ -12,6 +12,7 @@ namespace BilgiListeleme.Controllers
     public class GuncelleController : Controller
     {
         DBBilgiListelemeEntities db = new DBBilgiListelemeEntities();
+        [Authorize]
         public ActionResult Index(int Id)
         {
             var hks = db.TBLCustomerVdsList.Find(Id);
@@ -37,7 +38,7 @@ namespace BilgiListeleme.Controllers
             var dlt = db.TBLCustomerVdsList.Find(Id);
             db.TBLCustomerVdsList.Remove(dlt);
             db.SaveChanges();
-            return RedirectToAction("HomeController/Index");
+            return RedirectToAction("Index" , "Home");
         }
     }
 }

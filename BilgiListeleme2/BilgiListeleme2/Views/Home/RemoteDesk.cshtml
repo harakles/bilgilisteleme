@@ -50,6 +50,14 @@
 
                             </th>
                             <th scope="col">
+                                <label>SplashTop</label>
+
+                            </th>
+                            <th scope="col">
+                                <label>SplashTop Şifrsi</label>
+
+                            </th>
+                            <th scope="col">
                                 <label>Notlar</label>
 
                             </th>
@@ -75,6 +83,12 @@
                             </td>
                             <td scope="row">
                                 @Html.DisplayFor(y => y.AnyDeskPw, new { @class = "form-control" })
+                            </td>
+                            <td scope="row">
+                                @Html.DisplayFor(y => y.SplashTop, new { @class = "form-control" })
+                            </td>
+                            <td scope="row">
+                                @Html.DisplayFor(y => y.SplashTopPw, new { @class = "form-control" })
                             </td>
                             <td scope="row">
                                 @Html.DisplayFor(y => y.Notes, new { @class = "form-control" })

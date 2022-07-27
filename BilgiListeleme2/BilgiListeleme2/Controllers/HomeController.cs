@@ -24,10 +24,11 @@ namespace BilgiListeleme.Controllers
 
                 Datalar = Datalar.Where(m => m.Sirketİsmi.Contains(p));
             }
-            return View(Datalar.ToList().ToPagedList(sayfa, 6));
+            return View(Datalar.ToList().ToPagedList(sayfa, 10));
             //var datas = db.TBLCustomerVdsList.ToList().ToPagedList(sayfa, 8);
             //return View(datas);
         }
+        [Authorize]
         public ActionResult RemoteDesk(int Id)
         {
 
@@ -35,6 +36,7 @@ namespace BilgiListeleme.Controllers
 
             return View(yks);
         }
+        [Authorize]
         [HttpGet]
         public ActionResult VeriEkle()
         {
@@ -51,6 +53,13 @@ namespace BilgiListeleme.Controllers
             return RedirectToAction("Index", "Home");
 
         }
+        [Authorize]
+        public ActionResult LogOut()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Home");
+        }
+
 
     }
 }

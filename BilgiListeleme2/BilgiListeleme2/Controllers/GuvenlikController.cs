@@ -30,5 +30,9 @@ namespace BilgiListeleme.Controllers
                 return View();
             }
         }
+        public ActionResult SifremiUnuttum()
+        {
+            return View();
+        }
     }
 }

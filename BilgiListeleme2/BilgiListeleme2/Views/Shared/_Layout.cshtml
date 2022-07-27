@@ -20,10 +20,10 @@
 
         .header {
             overflow: hidden;
-            background-color: #7d32eb;
+            background-color: #ffffff;
             padding: 20px 10px;
             height: 79px;
-            margin-top:0px;
+            margin-top:-50px;
             
         }
 
@@ -50,8 +50,8 @@
 }
 
 .header a.active {
-  background-color:#2c441d;
-  color: white;
+  background-color:#ffffff;
+  color: black;
   height:48px;
 }
 
@@ -74,19 +74,20 @@
 </head>
 <body>
 
+    <div class="center-block" style="text-align:center;">
+        <a href="https://www.catsbilisim.net/" target="_blank" class="logo">
+            <img src="~/Image/cats22.png" style=" height:60px" />
+        </a>
+    </div>
+
     <div class="header">
-
-        <div class="header-left">
-
-            <a class="active" href="/Home/Index/"><i class="glyphicon glyphicon-home"></i></a>
-            <div class="center-block" style="margin-left:740px;">
-                <a href="https://www.catsbilisim.net/" class="logo">
-                    <img src="~/Image/cats22.png" style=" height:49px;" />
-                </a>
-            </div>
-            <a href="#about" style="float: right;"><i class="	glyphicon glyphicon-off"></i></a>
+        <div class="header-left col-md-10">
+            @using (Html.BeginForm("LogOut", "Home", FormMethod.Post))
+            {
+                <a style="float:right;" href="javascript:;" onclick="document.forms[0].submit();"><i class="glyphicon glyphicon-off"></i></a>
+            }
             <a href="/Admin/Index/" style="float: right;"><i class="	glyphicon glyphicon-user"></i></a>
-            
+            <a style="float:right" href="/Home/Index/"><i class="glyphicon glyphicon-home"></i></a>
 
         </div>
     </div>
@@ -96,7 +97,7 @@
 
     </div>
     <footer>
-        <p>&copy;Copyright  @DateTime.Now.Year Cats Bilişim Hizmetleri A.Ş Tüm Hakları Saklıdır</p>
+        <p style="text-align:center;">&copy;Copyright  @DateTime.Now.Year Cats Bilişim Hizmetleri A.Ş Tüm Hakları Saklıdır</p>
     </footer>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/content/bootstrap")

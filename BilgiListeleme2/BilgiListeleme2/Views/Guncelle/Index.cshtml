@@ -1,4 +1,5 @@
-﻿@model BilgiListeleme2.Models.TBLCustomerVdsList
+﻿@using BilgiListeleme2.Models
+@model BilgiListeleme2.Models.TBLCustomerVdsList
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -73,15 +74,12 @@
                     </div>
                 </div>
                 <button class="btn btn-info" style="margin-left:200px;">Güncelle</button>
-                <a href="/Guncelle/VeriSil/" class="btn btn-danger" >Sil</a>
+
 
             </td>
         </tr>
     </table>
 }
 
-@*@Html.BeginForm("VeriSil", "Guncelle", FormMethod.Post))
-                    {
-    <button class="btn btn-danger" type="submit">Sil</button>
-                    }*@
+
 
