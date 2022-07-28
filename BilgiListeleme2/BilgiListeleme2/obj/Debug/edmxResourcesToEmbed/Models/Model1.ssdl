@@ -27,14 +27,14 @@
     <Property Name="Vdsİp" Type="nvarchar(max)" />
     <Property Name="VdsName" Type="nvarchar(max)" />
     <Property Name="VdsPassword" Type="nvarchar(max)" />
-    <Property Name="TeamViewer" Type="nvarchar(max)" />
-    <Property Name="TeamViewerPw" Type="nvarchar(max)" />
     <Property Name="AnyDesk" Type="nvarchar(max)" />
     <Property Name="AnyDeskPw" Type="nvarchar(max)" />
+    <Property Name="TeamViewer" Type="nvarchar(max)" />
+    <Property Name="TeamViewerPw" Type="nvarchar(max)" />
     <Property Name="Notes" Type="nvarchar(max)" />
-    <Property Name="RemoteDeskId" Type="int" />
     <Property Name="SplashTop" Type="nvarchar(max)" />
     <Property Name="SplashTopPw" Type="nvarchar(max)" />
+    <Property Name="RemoteDeskId" Type="int" />
   </EntityType>
   <EntityType Name="TBLEkle">
     <Key>

@@ -42,7 +42,6 @@ namespace BilgiListeleme.Controllers
         public ActionResult VeriEkle()
         {
 
-
             return View();
         }
         [HttpPost]

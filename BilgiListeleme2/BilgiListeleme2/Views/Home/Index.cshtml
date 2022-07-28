@@ -1,60 +1,68 @@
 ﻿@using BilgiListeleme2.Models
 @using PagedList
 @using PagedList.Mvc
-@using SweetAlert.Controllers
+@using SweetAlert
 @model PagedList.IPagedList<TBLCustomerVdsList>
 @{
     ViewBag.Title = " List of data";
 }
-<script src="~/Scripts/jquery-3.4.1.js"></script>
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+
 
 <h2>Cats Müşteri Paneli</h2>
-<div class="col-md-10">
-    <a style="float: right; margin-top: -5%; margin-right: -189px;" href="/Home/VeriEkle/" class="btn btn-primary">Ekle</a>
-</div>
+<section id="configuration">
+    <div class="col-md-10">
+        <a style="float: right; margin-top: -5%; margin-right: -189px;" href="/Home/VeriEkle/" class="btn btn-primary">Ekle</a>
+    </div>
 
-<div class="col-md-2" style="float:right">
-    <label for="exampleDataList" class="form-label">
+    <div class="col-md-2" style="float:right">
+        <label for="exampleDataList" class="form-label">
 
-        @using (Html.BeginForm("Index", "", FormMethod.Get))
-        {
-            <span class="input-group" style="background-color:#ffffff"><i class="glyphicon glyphicon-filter">@Html.TextBox("p")</i></span>
-        }
-    </label>
-</div>
+            @using (Html.BeginForm("Index", "", FormMethod.Get))
+            {
+                <span class="input-group" style="background-color:#ffffff"><i class="glyphicon glyphicon-filter">@Html.TextBox("p")</i></span>
+            }
+        </label>
+    </div>
 
-<table class="table caption-top">
-    <thead>
-        <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Şirket İsmi</th>
-            <th scope="col">Vds İp</th>
-            <th scope="col">Vds Kullanıcı Adı</th>
-            <th scope="col">Vds şifre</th>
-            <th scope="col">Uzak Masaüstü</th>
-            <th scope="col">Güncelle</th>
-            <th>Sil</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var x in Model)
-        {
-            <tr>
-                <th scope="row">@x.Id</th>
-                <td>@x.Sirketİsmi</td>
-                <td>@x.Vdsİp</td>
-                <td>@x.VdsName</td>
-                <td>@x.VdsPassword</td>
-                <td><a href="/Home/RemoteDesk/@x.Id" class="btn btn-info" type="button">Uzak Masaüstü</a></td>
-                <td><a href="/Guncelle/Index/@x.Id" class="btn btn-warning" type="button">güncelle</a></td>
-                <td>
-                    <div class="delete"><a onclick="confirmation(event)" href="/Guncelle/VeriSil/@x.Id" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i>sil</a></div>
-                <td>
-            </tr>
-        }
-    </tbody>
-</table>
+    <div class="">
+        <table class="table caption-top" id="datatable">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Şirket İsmi</th>
+                    <th scope="col">Vds İp</th>
+                    <th scope="col">Vds Kullanıcı Adı</th>
+                    <th scope="col">Vds şifre</th>
+                    <th scope="col">Uzak Masaüstü</th>
+                    <th scope="col">Güncelle</th>
+                    <th scope="col">Sil</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var x in Model)
+                {
+                    <tr>
+                        <th scope="row">@x.Id</th>
+                        <td>@x.Sirketİsmi</td>
+                        <td>@x.Vdsİp</td>
+                        <td>@x.VdsName</td>
+                        <td>@x.VdsPassword</td>
+                        <td><a href="/Home/RemoteDesk/@x.Id" class="btn btn-info" type="button">Uzak Masaüstü</a></td>
+                        <td><a href="/Guncelle/Index/@x.Id" class="btn btn-warning" type="button">güncelle</a></td>
+                        <td>
+                            <a href="javascript:void(0);" class="delete-btn , btn btn-danger" title="Sil" data-id="@x.Id"><i class="fa fa-trash-o"></i></a>
+
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</section>
 <table>
     <tr>
         <td>
@@ -65,31 +73,8 @@
     </tr>
 </table>
 
-<script>
-    function confirmation(ev) {
-        ev.preventDefault();
-        var urlToRedirect = ev.currentTarget.getAttribute('href'); //use currentTarget because the click may be on the nested i tag and not a tag causing the href to be empty
-        console.log(urlToRedirect); // verify if this is the right URL
-        swal({
-            title: "Are you sure?",
-            text: "Once deleted, you will not be able to recover this imaginary file!",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-        })
-            .then((willDelete) => {
-                // redirect with javascript here as per your logic after showing the alert using the urlToRedirect value
-                if (willDelete) {
-                    swal("Poof! Your imaginary file has been deleted!", {
-                        icon: "success",
-                    });
-                } else {
-                    swal("Your imaginary file is safe!");
-                }
-            });
-    }
-</script>
-
-
+@section scripts{
+    <script src="~/js/custom.js"></script>
+}
 
 
