@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBCatsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="TBLAdminData">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LastLT" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="TBLRemoteDT">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RemoteDTName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="RemoteDTValue" Type="Int32" />
+    <NavigationProperty Name="TBLVdsListe" Relationship="DBCatsModel.FK_TBLVdsListe_TBLRemoteDT" FromRole="TBLRemoteDT" ToRole="TBLVdsListe" />
+  </EntityType>
+  <EntityType Name="TBLVdsListe">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SirketAdı" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="VdsIp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="VdsKullanıcıAdı" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="VdsPw" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="RemoteDeskId" Type="Int32" />
+    <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TBLRemoteDT" Relationship="DBCatsModel.FK_TBLVdsListe_TBLRemoteDT" FromRole="TBLVdsListe" ToRole="TBLRemoteDT" />
+    <Property Name="RemoteDeskAd" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="RemoteDeskPw" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="DBCatsEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TBLAdminData" EntityType="Self.TBLAdminData" />
+    <EntitySet Name="TBLRemoteDT" EntityType="Self.TBLRemoteDT" />
+    <EntitySet Name="TBLVdsListe" EntityType="Self.TBLVdsListe" />
+    <AssociationSet Name="FK_TBLVdsListe_TBLRemoteDT" Association="DBCatsModel.FK_TBLVdsListe_TBLRemoteDT">
+      <End Role="TBLRemoteDT" EntitySet="TBLRemoteDT" />
+      <End Role="TBLVdsListe" EntitySet="TBLVdsListe" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association Name="FK_TBLVdsListe_TBLRemoteDT">
+    <End Type="DBCatsModel.TBLRemoteDT" Role="TBLRemoteDT" Multiplicity="1" />
+    <End Type="DBCatsModel.TBLVdsListe" Role="TBLVdsListe" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="TBLRemoteDT">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TBLVdsListe">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

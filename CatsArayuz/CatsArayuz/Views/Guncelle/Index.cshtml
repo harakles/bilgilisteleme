@@ -1,0 +1,78 @@
+﻿@using CatsArayuz.Models
+@model CatsArayuz.Models.TBLVdsListe
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("VeriGuncelle", "Guncelle", FormMethod.Post))
+{
+    <table>
+        <tr>
+            <td>
+                <div class="container" style="width:350px;">
+                    <div class="panel panel-default" style="width: 300px;">
+                        <div class="panel-body">
+                            <label>Şirket Adı</label>
+                            @Html.TextBoxFor(y => y.SirketAdı, new { @class = "form-control" })
+
+                            <label>Vds Kullanıcı Adı</label>
+                            @Html.TextBoxFor(y => y.VdsKullanıcıAdı, new { @class = "form-control" })
+
+                            <label>Vds Ip</label>
+                            @Html.TextBoxFor(y => y.VdsIp, new { @class = "form-control" })
+
+                            <label>Vds Şifresi</label>
+                            @Html.TextBoxFor(y => y.VdsPw, new { @class = "form-control" })
+                            <br />
+                            <br />@Html.HiddenFor(y => y.Id, new { @class = "form-control" })
+                            <br />
+                            <br />
+                            <br />
+                           
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="container" style="width:350px;">
+                    <div class="panel panel-default" style="width:300px;">
+                        <div class="panel-body">
+                            <label>Uzak Masaüstü</label>
+                            @Html.DropDownListFor(y => y.TBLRemoteDT.Id, (List<SelectListItem>) ViewBag.dgr1,
+                            new{@class = "form-control"})
+                            <label>Kullanıcı Adı</label>
+                            @Html.TextBoxFor(y => y.RemoteDeskAd, new { @class = "form-control" })
+                            <label>Şifre</label>
+                            @Html.TextBoxFor(y => y.RemoteDeskPw, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="container" style="width:350px;">
+                    <div class="panel panel-default" style="width:300px;">
+                        <div class="panel-body">
+                            <br />
+                            <br />
+                            <label>Notlar</label>
+                            @Html.TextAreaFor(y => y.Notes, new { @class = "form-control" })
+
+
+                            <br />
+                            <br />
+                            <br />
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-info" style="margin-left:200px;">Güncelle</button>
+
+
+            </td>
+        </tr>
+    </table>
+}
+
+
+

@@ -1,0 +1,92 @@
+﻿@model CatsArayuz.Models.TBLVdsListe
+
+@{
+    ViewBag.Title = "RemoteDesk";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2>Cats Müşteri Paneli</h2>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            @using (Html.BeginForm("", "", FormMethod.Post))
+            {
+
+
+                <div class="form-group">
+                    <table class="table caption-top">
+                        <tr>
+
+
+                            <th scope="col">
+                                <label>Şirket Id</label>
+
+                            </th>
+                            <th scope="col">
+                                <label>Şirket Adı</label>
+
+
+                            </th>
+                            <th scope="col">
+
+                                <label>Uzak Masaüstü Adı</label>
+
+
+                            </th>
+                            <th scope="col">
+
+                                <label>Kullanıcı Adı</label>
+
+
+                            </th>
+                            <th scope="col">
+
+                                <label>Şifre</label>
+
+
+                            </th>
+                            <th scope="col">
+
+                                <label>Notlar</label>
+
+
+                            </th>
+
+                            <th scope="col">
+                                <label>&nbsp;</label>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td scope="row">
+                                @Html.DisplayFor(y => y.Id, new { @class = "form-control" })
+                            </td>
+                            <td scope="row">
+                                @Html.DisplayFor(y => y.SirketAdı, new { @class = "form-control" })
+                            </td>
+                            <td scope="row">
+                                @Html.DisplayFor(y => y.TBLRemoteDT.RemoteDTName, new { @class = "form-control" })
+                            </td>
+                            <td scope="row">
+                                @Html.DisplayFor(y => y.TBLRemoteDT.RemoteDTUserName, new { @class = "form-control" })
+                            </td>
+                            <td scope="row">
+                                @Html.DisplayFor(y => y.TBLRemoteDT.RemoteDTPw, new { @class = "form-control" })
+                            </td>
+                            <td scope="row">
+                                @Html.DisplayFor(y => y.Notes, new { @class = "form-control" })
+                            </td>
+                            <td scope="row">
+                                <a class="btn btn-primary" href="/Home/Index">Geri Dön</a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+            }
+        </div>
+    </div>
+</div>
+
+
+
+

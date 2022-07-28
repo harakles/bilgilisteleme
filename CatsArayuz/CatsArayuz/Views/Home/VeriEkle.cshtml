@@ -1,0 +1,156 @@
+﻿@using CatsArayuz.Models
+@model CatsArayuz.Models.classs.Class1
+@{
+    ViewBag.Title = "VeriEkle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("select").change(function () {
+                $(this).find("option:selected").each(function () {
+                    var optionValue = $(this).attr("value");
+                    if (optionValue) {
+                        $(".box").not("." + optionValue).hide();
+                        $("." + optionValue).show();
+                    } else {
+                        $(".box").hide();
+                    }
+                });
+            }).change();
+        });
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <style>
+        select {
+            /* styling */
+            background-color: white;
+            border: thin solid blue;
+            border-radius: 4px;
+            display: inline-block;
+            font: inherit;
+            line-height: 1.5em;
+            padding: 0.5em 3.5em 0.5em 1em;
+            /* reset */
+
+            margin: 0;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+        }
+
+
+            /* arrows */
+
+            select.classic {
+                background-image: linear-gradient(45deg, transparent 50%, blue 50%), linear-gradient(135deg, blue 50%, transparent 50%), linear-gradient(to right, skyblue, skyblue);
+                background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), 100% 0;
+                background-size: 5px 5px, 5px 5px, 2.5em 2.5em;
+                background-repeat: no-repeat;
+            }
+
+                select.classic:focus {
+                    background-image: linear-gradient(45deg, white 50%, transparent 50%), linear-gradient(135deg, transparent 50%, white 50%), linear-gradient(to right, gray, gray);
+                    background-position: calc(100% - 15px) 1em, calc(100% - 20px) 1em, 100% 0;
+                    background-size: 5px 5px, 5px 5px, 2.5em 2.5em;
+                    background-repeat: no-repeat;
+                    border-color: grey;
+                    outline: 0;
+                }
+    </style>
+</head>
+
+@using (Html.BeginForm("VeriEkle", "Home", FormMethod.Post))
+{
+    <table>
+        <tr>
+            <td>
+                <div class="container" style="width:300px;">
+                    <div class="panel panel-default" style="width: 300px;">
+                        <div class="panel-body">
+                            @Html.HiddenFor(k => k.vdss1.Id, new { @class = "form-control" })
+                            <label>şirket Adı</label>
+                            @Html.TextBoxFor(k => k.vdss1.SirketAdı, new { @class = "form-control" })
+
+                            <label>Kullanıcı Adı</label>
+                            @Html.TextBoxFor(k => k.vdss1.VdsKullanıcıAdı, new { @class = "form-control" })
+
+
+                            <label>Vds Ip</label>
+                            @Html.TextBoxFor(k => k.vdss1.VdsIp, new { @class = "form-control" })
+
+
+                            <label>Vds Şifresi</label>
+                            @Html.TextBoxFor(k => k.vdss1.VdsPw, new { @class = "form-control" })
+
+                            <label>Uzak Masaüstü Uygulamasını seçiniz</label>
+
+                            <select id="myselection" class="classic">
+                                <option selected="selected">--UzakMasaüstü Seçiniz--</option>
+                                @foreach (var x in Model.deger1)
+                                {
+                                    for (var i = 1; i <= x.Id; i++)
+                                    {
+                                        var z = 0;
+                                        z = z + 1;
+                                    }
+                                    <option value="@x.RemoteDTValue">@x.RemoteDTName</option>
+                                }
+
+
+                            </select>
+
+                        </div>
+                    </div>
+                </div>
+            </td>
+            @foreach (var z in Model.deger1)
+            {
+                <td>
+                    <div class="@z.RemoteDTValue box " style="margin-left:10px;">
+                        <div class="container" style="width:350px;">
+                            <div class="panel panel-default" style="width:300px;">
+                                <div class="panel-body">
+
+                                    <br />
+                                    <br />
+                                    <label>Kullanıcı Adı</label>
+                                    @Html.TextBoxFor(k => k.vdss1.RemoteDeskAd, new { @class = "form-control" })
+
+                                    <label>Şifre</label>
+                                    @Html.TextBoxFor(k => k.vdss1.RemoteDeskPw, new { @class = "form-control" })
+
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <br />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            }
+            <td>
+                <div class="1 2 3 4 5 6 7 8 9 10 box" style="margin-left:10px;">
+                    <div class="container" style="width:350px;">
+                        <div class="panel panel-default" style="width:300px;">
+                            <div class="panel-body">
+                                <label>Notlar</label>
+                                @Html.TextAreaFor(y => y.vdss1.Notes, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <div>
+        <button style="margin-left:800px;" type="submit" class="btn btn-info">Ekle</button>
+    </div>
+
+}

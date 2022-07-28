@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DBCatsModelStoreContainer" CdmEntityContainer="DBCatsEntities">
+    <EntitySetMapping Name="TBLAdminData">
+      <EntityTypeMapping TypeName="DBCatsModel.TBLAdminData">
+        <MappingFragment StoreEntitySet="TBLAdminData">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="LastLT" ColumnName="LastLT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLRemoteDT">
+      <EntityTypeMapping TypeName="DBCatsModel.TBLRemoteDT">
+        <MappingFragment StoreEntitySet="TBLRemoteDT">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RemoteDTName" ColumnName="RemoteDTName" />
+          <ScalarProperty Name="RemoteDTValue" ColumnName="RemoteDTValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLVdsListe">
+      <EntityTypeMapping TypeName="DBCatsModel.TBLVdsListe">
+        <MappingFragment StoreEntitySet="TBLVdsListe">
+          <ScalarProperty Name="RemoteDeskPw" ColumnName="RemoteDeskPw" />
+          <ScalarProperty Name="RemoteDeskAd" ColumnName="RemoteDeskAd" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SirketAdı" ColumnName="SirketAdı" />
+          <ScalarProperty Name="VdsIp" ColumnName="VdsIp" />
+          <ScalarProperty Name="VdsKullanıcıAdı" ColumnName="VdsKullanıcıAdı" />
+          <ScalarProperty Name="VdsPw" ColumnName="VdsPw" />
+          <ScalarProperty Name="RemoteDeskId" ColumnName="RemoteDeskId" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

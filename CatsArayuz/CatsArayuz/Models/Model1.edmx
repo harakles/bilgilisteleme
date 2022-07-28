@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DBCatsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TBLAdminData">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar(max)" />
+          <Property Name="Password" Type="nvarchar(max)" />
+          <Property Name="LastLT" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="TBLRemoteDT">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RemoteDTName" Type="nvarchar(max)" />
+          <Property Name="RemoteDTValue" Type="int" />
+        </EntityType>
+        <EntityType Name="TBLVdsListe">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SirketAdı" Type="nvarchar(max)" />
+          <Property Name="VdsIp" Type="nvarchar(max)" />
+          <Property Name="VdsKullanıcıAdı" Type="nvarchar(max)" />
+          <Property Name="VdsPw" Type="nvarchar(max)" />
+          <Property Name="RemoteDeskId" Type="int" />
+          <Property Name="RemoteDeskAd" Type="nvarchar(max)" />
+          <Property Name="RemoteDeskPw" Type="nvarchar(max)" />
+          <Property Name="Notes" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_TBLVdsListe_TBLRemoteDT">
+          <End Role="TBLRemoteDT" Type="Self.TBLRemoteDT" Multiplicity="1" />
+          <End Role="TBLVdsListe" Type="Self.TBLVdsListe" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TBLRemoteDT">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TBLVdsListe">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBCatsModelStoreContainer">
+          <EntitySet Name="TBLAdminData" EntityType="Self.TBLAdminData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLRemoteDT" EntityType="Self.TBLRemoteDT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBLVdsListe" EntityType="Self.TBLVdsListe" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TBLVdsListe_TBLRemoteDT" Association="Self.FK_TBLVdsListe_TBLRemoteDT">
+            <End Role="TBLRemoteDT" EntitySet="TBLRemoteDT" />
+            <End Role="TBLVdsListe" EntitySet="TBLVdsListe" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBCatsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TBLAdminData">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastLT" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="TBLRemoteDT">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RemoteDTName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RemoteDTValue" Type="Int32" />
+          <NavigationProperty Name="TBLVdsListe" Relationship="DBCatsModel.FK_TBLVdsListe_TBLRemoteDT" FromRole="TBLRemoteDT" ToRole="TBLVdsListe" />
+        </EntityType>
+        <EntityType Name="TBLVdsListe">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SirketAdı" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="VdsIp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="VdsKullanıcıAdı" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="VdsPw" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RemoteDeskId" Type="Int32" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TBLRemoteDT" Relationship="DBCatsModel.FK_TBLVdsListe_TBLRemoteDT" FromRole="TBLVdsListe" ToRole="TBLRemoteDT" />
+          <Property Name="RemoteDeskAd" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RemoteDeskPw" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="DBCatsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TBLAdminData" EntityType="Self.TBLAdminData" />
+          <EntitySet Name="TBLRemoteDT" EntityType="Self.TBLRemoteDT" />
+          <EntitySet Name="TBLVdsListe" EntityType="Self.TBLVdsListe" />
+          <AssociationSet Name="FK_TBLVdsListe_TBLRemoteDT" Association="DBCatsModel.FK_TBLVdsListe_TBLRemoteDT">
+            <End Role="TBLRemoteDT" EntitySet="TBLRemoteDT" />
+            <End Role="TBLVdsListe" EntitySet="TBLVdsListe" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK_TBLVdsListe_TBLRemoteDT">
+          <End Type="DBCatsModel.TBLRemoteDT" Role="TBLRemoteDT" Multiplicity="1" />
+          <End Type="DBCatsModel.TBLVdsListe" Role="TBLVdsListe" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TBLRemoteDT">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TBLVdsListe">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBCatsModelStoreContainer" CdmEntityContainer="DBCatsEntities">
+          <EntitySetMapping Name="TBLAdminData">
+            <EntityTypeMapping TypeName="DBCatsModel.TBLAdminData">
+              <MappingFragment StoreEntitySet="TBLAdminData">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="LastLT" ColumnName="LastLT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLRemoteDT">
+            <EntityTypeMapping TypeName="DBCatsModel.TBLRemoteDT">
+              <MappingFragment StoreEntitySet="TBLRemoteDT">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RemoteDTName" ColumnName="RemoteDTName" />
+                <ScalarProperty Name="RemoteDTValue" ColumnName="RemoteDTValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBLVdsListe">
+            <EntityTypeMapping TypeName="DBCatsModel.TBLVdsListe">
+              <MappingFragment StoreEntitySet="TBLVdsListe">
+                <ScalarProperty Name="RemoteDeskPw" ColumnName="RemoteDeskPw" />
+                <ScalarProperty Name="RemoteDeskAd" ColumnName="RemoteDeskAd" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SirketAdı" ColumnName="SirketAdı" />
+                <ScalarProperty Name="VdsIp" ColumnName="VdsIp" />
+                <ScalarProperty Name="VdsKullanıcıAdı" ColumnName="VdsKullanıcıAdı" />
+                <ScalarProperty Name="VdsPw" ColumnName="VdsPw" />
+                <ScalarProperty Name="RemoteDeskId" ColumnName="RemoteDeskId" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
