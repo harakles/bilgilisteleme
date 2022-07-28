@@ -32,14 +32,14 @@
           <Property Name="Vdsİp" Type="nvarchar(max)" />
           <Property Name="VdsName" Type="nvarchar(max)" />
           <Property Name="VdsPassword" Type="nvarchar(max)" />
-          <Property Name="AnyDesk" Type="nvarchar(max)" />
-          <Property Name="AnyDeskPw" Type="nvarchar(max)" />
           <Property Name="TeamViewer" Type="nvarchar(max)" />
           <Property Name="TeamViewerPw" Type="nvarchar(max)" />
+          <Property Name="AnyDesk" Type="nvarchar(max)" />
+          <Property Name="AnyDeskPw" Type="nvarchar(max)" />
           <Property Name="Notes" Type="nvarchar(max)" />
+          <Property Name="RemoteDeskId" Type="int" />
           <Property Name="SplashTop" Type="nvarchar(max)" />
           <Property Name="SplashTopPw" Type="nvarchar(max)" />
-          <Property Name="RemoteDeskId" Type="int" />
         </EntityType>
         <EntityType Name="TBLEkle">
           <Key>
@@ -134,14 +134,14 @@
           <Property Name="Vdsİp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="VdsName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="VdsPassword" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="AnyDesk" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="AnyDeskPw" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="TeamViewer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="TeamViewerPw" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AnyDesk" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AnyDeskPw" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RemoteDeskId" Type="Int32" />
           <Property Name="SplashTop" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="SplashTopPw" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="RemoteDeskId" Type="Int32" />
           <NavigationProperty Name="TBLEkle" Relationship="Self.FK_TBLCustomerVdsList_TBLEkle" FromRole="TBLCustomerVdsList" ToRole="TBLEkle" />
         </EntityType>
         <EntityType Name="TBLEkle">
@@ -165,7 +165,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DBBilgiListelemeEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DBBilgiListelemeEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="TBLAdmin" EntityType="Self.TBLAdmin" />
           <EntitySet Name="TBLCustomerVdsList" EntityType="Self.TBLCustomerVdsList" />
@@ -221,7 +221,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DBBilgiListelemeModelStoreContainer" CdmEntityContainer="DBBilgiListelemeEntities">
+        <EntityContainerMapping StorageEntityContainer="DBBilgiListelemeModelStoreContainer" CdmEntityContainer="DBBilgiListelemeEntities1">
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="DBBilgiListelemeModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
@@ -250,14 +250,14 @@
                 <ScalarProperty Name="Vdsİp" ColumnName="Vdsİp" />
                 <ScalarProperty Name="VdsName" ColumnName="VdsName" />
                 <ScalarProperty Name="VdsPassword" ColumnName="VdsPassword" />
-                <ScalarProperty Name="AnyDesk" ColumnName="AnyDesk" />
-                <ScalarProperty Name="AnyDeskPw" ColumnName="AnyDeskPw" />
                 <ScalarProperty Name="TeamViewer" ColumnName="TeamViewer" />
                 <ScalarProperty Name="TeamViewerPw" ColumnName="TeamViewerPw" />
+                <ScalarProperty Name="AnyDesk" ColumnName="AnyDesk" />
+                <ScalarProperty Name="AnyDeskPw" ColumnName="AnyDeskPw" />
                 <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="RemoteDeskId" ColumnName="RemoteDeskId" />
                 <ScalarProperty Name="SplashTop" ColumnName="SplashTop" />
                 <ScalarProperty Name="SplashTopPw" ColumnName="SplashTopPw" />
-                <ScalarProperty Name="RemoteDeskId" ColumnName="RemoteDeskId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

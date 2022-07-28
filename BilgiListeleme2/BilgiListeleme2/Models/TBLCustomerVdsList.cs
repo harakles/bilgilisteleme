@@ -19,14 +19,14 @@ namespace BilgiListeleme2.Models
         public string Vdsİp { get; set; }
         public string VdsName { get; set; }
         public string VdsPassword { get; set; }
-        public string AnyDesk { get; set; }
-        public string AnyDeskPw { get; set; }
         public string TeamViewer { get; set; }
         public string TeamViewerPw { get; set; }
+        public string AnyDesk { get; set; }
+        public string AnyDeskPw { get; set; }
         public string Notes { get; set; }
+        public Nullable<int> RemoteDeskId { get; set; }
         public string SplashTop { get; set; }
         public string SplashTopPw { get; set; }
-        public Nullable<int> RemoteDeskId { get; set; }
     
         public virtual TBLEkle TBLEkle { get; set; }
     }

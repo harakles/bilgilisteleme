@@ -15,10 +15,10 @@ namespace BilgiListeleme2.Models
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class DBBilgiListelemeEntities : DbContext
+    public partial class DBBilgiListelemeEntities1 : DbContext
     {
-        public DBBilgiListelemeEntities()
-            : base("name=DBBilgiListelemeEntities")
+        public DBBilgiListelemeEntities1()
+            : base("name=DBBilgiListelemeEntities1")
         {
         }
     

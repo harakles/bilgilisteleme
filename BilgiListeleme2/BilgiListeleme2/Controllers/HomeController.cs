@@ -7,12 +7,13 @@ using PagedList;
 using System.Web.Security;
 using PagedList.Mvc;
 using BilgiListeleme2.Models;
+using SweetAlert.Controllers;
 
 namespace BilgiListeleme.Controllers
 {
     public class HomeController : Controller
     {
-        DBBilgiListelemeEntities db = new DBBilgiListelemeEntities();
+        DBBilgiListelemeEntities1 db = new DBBilgiListelemeEntities1();
         [Authorize]
         public ActionResult Index(string p, int sayfa = 1)
         {

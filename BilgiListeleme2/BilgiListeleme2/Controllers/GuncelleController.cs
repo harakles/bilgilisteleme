@@ -6,12 +6,13 @@ using System.Web;
 using System.Web.Mvc;
 using PagedList;
 using PagedList.Mvc;
+using BilgiListeleme2;
 
 namespace BilgiListeleme.Controllers
 {
     public class GuncelleController : Controller
     {
-        DBBilgiListelemeEntities db = new DBBilgiListelemeEntities();
+        DBBilgiListelemeEntities1 db = new DBBilgiListelemeEntities1();
         [Authorize]
         public ActionResult Index(int Id)
         {

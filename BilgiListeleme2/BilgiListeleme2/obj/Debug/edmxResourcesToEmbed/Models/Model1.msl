@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="DBBilgiListelemeModelStoreContainer" CdmEntityContainer="DBBilgiListelemeEntities">
+  <EntityContainerMapping StorageEntityContainer="DBBilgiListelemeModelStoreContainer" CdmEntityContainer="DBBilgiListelemeEntities1">
     <EntitySetMapping Name="sysdiagrams">
       <EntityTypeMapping TypeName="DBBilgiListelemeModel.sysdiagrams">
         <MappingFragment StoreEntitySet="sysdiagrams">
@@ -29,14 +29,14 @@
           <ScalarProperty Name="Vdsİp" ColumnName="Vdsİp" />
           <ScalarProperty Name="VdsName" ColumnName="VdsName" />
           <ScalarProperty Name="VdsPassword" ColumnName="VdsPassword" />
-          <ScalarProperty Name="AnyDesk" ColumnName="AnyDesk" />
-          <ScalarProperty Name="AnyDeskPw" ColumnName="AnyDeskPw" />
           <ScalarProperty Name="TeamViewer" ColumnName="TeamViewer" />
           <ScalarProperty Name="TeamViewerPw" ColumnName="TeamViewerPw" />
+          <ScalarProperty Name="AnyDesk" ColumnName="AnyDesk" />
+          <ScalarProperty Name="AnyDeskPw" ColumnName="AnyDeskPw" />
           <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="RemoteDeskId" ColumnName="RemoteDeskId" />
           <ScalarProperty Name="SplashTop" ColumnName="SplashTop" />
           <ScalarProperty Name="SplashTopPw" ColumnName="SplashTopPw" />
-          <ScalarProperty Name="RemoteDeskId" ColumnName="RemoteDeskId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

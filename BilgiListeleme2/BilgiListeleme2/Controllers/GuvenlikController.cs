@@ -10,7 +10,7 @@ namespace BilgiListeleme.Controllers
 {
     public class GuvenlikController : Controller
     {
-        DBBilgiListelemeEntities db = new DBBilgiListelemeEntities();
+        DBBilgiListelemeEntities1 db = new DBBilgiListelemeEntities1();
         // GET: Guvenlik
         public ActionResult GirisYap()
         {
