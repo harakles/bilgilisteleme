@@ -20,9 +20,9 @@ namespace CatsArayuz.Models
         public string VdsKullanıcıAdı { get; set; }
         public string VdsPw { get; set; }
         public Nullable<int> RemoteDeskId { get; set; }
-        public string Notes { get; set; }
         public string RemoteDeskAd { get; set; }
         public string RemoteDeskPw { get; set; }
+        public string Notes { get; set; }
     
         public virtual TBLRemoteDT TBLRemoteDT { get; set; }
     }

@@ -38,11 +38,14 @@ namespace BilgiListeleme.Controllers
 
             return View(yks);
         }
+        
         [Authorize]
         [HttpGet]
         public ActionResult VeriEkle()
         {
+           
             Class1 cs = new Class1();
+            
             cs.deger1 = db.TBLRemoteDT.ToList();
             
             return View(cs);

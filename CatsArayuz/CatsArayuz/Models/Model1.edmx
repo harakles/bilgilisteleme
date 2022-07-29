@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="DBCatsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="DBCatsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="TBLAdminData">
           <Key>
             <PropertyRef Name="Id" />
@@ -37,14 +37,14 @@
           <Property Name="Notes" Type="nvarchar(max)" />
         </EntityType>
         <Association Name="FK_TBLVdsListe_TBLRemoteDT">
-          <End Role="TBLRemoteDT" Type="Self.TBLRemoteDT" Multiplicity="1" />
-          <End Role="TBLVdsListe" Type="Self.TBLVdsListe" Multiplicity="0..1" />
+          <End Role="TBLRemoteDT" Type="Self.TBLRemoteDT" Multiplicity="0..1" />
+          <End Role="TBLVdsListe" Type="Self.TBLVdsListe" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBLRemoteDT">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="TBLVdsListe">
-              <PropertyRef Name="Id" />
+              <PropertyRef Name="RemoteDeskId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -57,7 +57,8 @@
             <End Role="TBLVdsListe" EntitySet="TBLVdsListe" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DBCatsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -77,7 +78,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="RemoteDTName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="RemoteDTValue" Type="Int32" />
-          <NavigationProperty Name="TBLVdsListe" Relationship="DBCatsModel.FK_TBLVdsListe_TBLRemoteDT" FromRole="TBLRemoteDT" ToRole="TBLVdsListe" />
+          <NavigationProperty Name="TBLVdsListe" Relationship="Self.FK_TBLVdsListe_TBLRemoteDT" FromRole="TBLRemoteDT" ToRole="TBLVdsListe" />
         </EntityType>
         <EntityType Name="TBLVdsListe">
           <Key>
@@ -89,32 +90,32 @@
           <Property Name="VdsKullanıcıAdı" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="VdsPw" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="RemoteDeskId" Type="Int32" />
-          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="TBLRemoteDT" Relationship="DBCatsModel.FK_TBLVdsListe_TBLRemoteDT" FromRole="TBLVdsListe" ToRole="TBLRemoteDT" />
           <Property Name="RemoteDeskAd" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="RemoteDeskPw" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TBLRemoteDT" Relationship="Self.FK_TBLVdsListe_TBLRemoteDT" FromRole="TBLVdsListe" ToRole="TBLRemoteDT" />
         </EntityType>
-        <EntityContainer Name="DBCatsEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="TBLAdminData" EntityType="Self.TBLAdminData" />
-          <EntitySet Name="TBLRemoteDT" EntityType="Self.TBLRemoteDT" />
-          <EntitySet Name="TBLVdsListe" EntityType="Self.TBLVdsListe" />
-          <AssociationSet Name="FK_TBLVdsListe_TBLRemoteDT" Association="DBCatsModel.FK_TBLVdsListe_TBLRemoteDT">
-            <End Role="TBLRemoteDT" EntitySet="TBLRemoteDT" />
-            <End Role="TBLVdsListe" EntitySet="TBLVdsListe" />
-          </AssociationSet>
-        </EntityContainer>
         <Association Name="FK_TBLVdsListe_TBLRemoteDT">
-          <End Type="DBCatsModel.TBLRemoteDT" Role="TBLRemoteDT" Multiplicity="1" />
-          <End Type="DBCatsModel.TBLVdsListe" Role="TBLVdsListe" Multiplicity="0..1" />
+          <End Role="TBLRemoteDT" Type="Self.TBLRemoteDT" Multiplicity="0..1" />
+          <End Role="TBLVdsListe" Type="Self.TBLVdsListe" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TBLRemoteDT">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="TBLVdsListe">
-              <PropertyRef Name="Id" />
+              <PropertyRef Name="RemoteDeskId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityContainer Name="DBCatsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TBLAdminData" EntityType="Self.TBLAdminData" />
+          <EntitySet Name="TBLRemoteDT" EntityType="Self.TBLRemoteDT" />
+          <EntitySet Name="TBLVdsListe" EntityType="Self.TBLVdsListe" />
+          <AssociationSet Name="FK_TBLVdsListe_TBLRemoteDT" Association="Self.FK_TBLVdsListe_TBLRemoteDT">
+            <End Role="TBLRemoteDT" EntitySet="TBLRemoteDT" />
+            <End Role="TBLVdsListe" EntitySet="TBLVdsListe" />
+          </AssociationSet>
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -143,14 +144,14 @@
           <EntitySetMapping Name="TBLVdsListe">
             <EntityTypeMapping TypeName="DBCatsModel.TBLVdsListe">
               <MappingFragment StoreEntitySet="TBLVdsListe">
-                <ScalarProperty Name="RemoteDeskPw" ColumnName="RemoteDeskPw" />
-                <ScalarProperty Name="RemoteDeskAd" ColumnName="RemoteDeskAd" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="SirketAdı" ColumnName="SirketAdı" />
                 <ScalarProperty Name="VdsIp" ColumnName="VdsIp" />
                 <ScalarProperty Name="VdsKullanıcıAdı" ColumnName="VdsKullanıcıAdı" />
                 <ScalarProperty Name="VdsPw" ColumnName="VdsPw" />
                 <ScalarProperty Name="RemoteDeskId" ColumnName="RemoteDeskId" />
+                <ScalarProperty Name="RemoteDeskAd" ColumnName="RemoteDeskAd" />
+                <ScalarProperty Name="RemoteDeskPw" ColumnName="RemoteDeskPw" />
                 <ScalarProperty Name="Notes" ColumnName="Notes" />
               </MappingFragment>
             </EntityTypeMapping>

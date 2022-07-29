@@ -32,14 +32,14 @@
     <Property Name="Notes" Type="nvarchar(max)" />
   </EntityType>
   <Association Name="FK_TBLVdsListe_TBLRemoteDT">
-    <End Role="TBLRemoteDT" Type="Self.TBLRemoteDT" Multiplicity="1" />
-    <End Role="TBLVdsListe" Type="Self.TBLVdsListe" Multiplicity="0..1" />
+    <End Role="TBLRemoteDT" Type="Self.TBLRemoteDT" Multiplicity="0..1" />
+    <End Role="TBLVdsListe" Type="Self.TBLVdsListe" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TBLRemoteDT">
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="TBLVdsListe">
-        <PropertyRef Name="Id" />
+        <PropertyRef Name="RemoteDeskId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

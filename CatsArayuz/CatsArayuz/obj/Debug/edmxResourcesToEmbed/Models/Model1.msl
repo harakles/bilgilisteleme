@@ -23,14 +23,14 @@
     <EntitySetMapping Name="TBLVdsListe">
       <EntityTypeMapping TypeName="DBCatsModel.TBLVdsListe">
         <MappingFragment StoreEntitySet="TBLVdsListe">
-          <ScalarProperty Name="RemoteDeskPw" ColumnName="RemoteDeskPw" />
-          <ScalarProperty Name="RemoteDeskAd" ColumnName="RemoteDeskAd" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="SirketAdı" ColumnName="SirketAdı" />
           <ScalarProperty Name="VdsIp" ColumnName="VdsIp" />
           <ScalarProperty Name="VdsKullanıcıAdı" ColumnName="VdsKullanıcıAdı" />
           <ScalarProperty Name="VdsPw" ColumnName="VdsPw" />
           <ScalarProperty Name="RemoteDeskId" ColumnName="RemoteDeskId" />
+          <ScalarProperty Name="RemoteDeskAd" ColumnName="RemoteDeskAd" />
+          <ScalarProperty Name="RemoteDeskPw" ColumnName="RemoteDeskPw" />
           <ScalarProperty Name="Notes" ColumnName="Notes" />
         </MappingFragment>
       </EntityTypeMapping>

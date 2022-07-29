@@ -14,10 +14,17 @@ namespace CatsArayuz.Models
     
     public partial class TBLRemoteDT
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TBLRemoteDT()
+        {
+            this.TBLVdsListe = new HashSet<TBLVdsListe>();
+        }
+    
         public int Id { get; set; }
         public string RemoteDTName { get; set; }
         public Nullable<int> RemoteDTValue { get; set; }
     
-        public virtual TBLVdsListe TBLVdsListe { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TBLVdsListe> TBLVdsListe { get; set; }
     }
 }
