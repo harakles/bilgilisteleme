@@ -1,5 +1,5 @@
-﻿@using CatsArayuz.Models
-@model CatsArayuz.Models.classs.Class1
+﻿@model CatsArayuz.Models.TBLVdsListe
+@using CatsArayuz.Models
 @{
     ViewBag.Title = "VeriEkle";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -72,34 +72,31 @@
                 <div class="container" style="width:300px;">
                     <div class="panel panel-default" style="width: 300px;">
                         <div class="panel-body">
-                            @Html.HiddenFor(k => k.vdss1.Id, new { @class = "form-control" })
+                            @Html.HiddenFor(k => k.Id, new { @class = "form-control" })
                             <label>şirket Adı</label>
-                            @Html.TextBoxFor(k => k.vdss1.SirketAdı, new { @class = "form-control" })
-
+                            @Html.TextBoxFor(k => k.SirketAdı, new { @class = "form-control" })
+                            <label>Şirket Türü</label>
+                            @Html.DropDownListFor(k => k.TBLSirketTur.Id, (List<SelectListItem>)ViewBag.dgr2,
+                            new { @class = "form-control" })
                             <label>Kullanıcı Adı</label>
-                            @Html.TextBoxFor(k => k.vdss1.VdsKullanıcıAdı, new { @class = "form-control" })
+                            @Html.TextBoxFor(k => k.VdsKullanıcıAdı, new { @class = "form-control" })
 
 
                             <label>Vds Ip</label>
-                            @Html.TextBoxFor(k => k.vdss1.VdsIp, new { @class = "form-control" })
+                            @Html.TextBoxFor(k => k.VdsIp, new { @class = "form-control" })
 
 
                             <label>Vds Şifresi</label>
-                            @Html.TextBoxFor(k => k.vdss1.VdsPw, new { @class = "form-control" })
+                            @Html.TextBoxFor(k => k.VdsPw, new { @class = "form-control" })
 
                             <label>Uzak Masaüstü Uygulamasını seçiniz</label>
 
                             <select id="myselection" class="classic">
+
                                 <option selected="selected">--UzakMasaüstü Seçiniz--</option>
-                                @foreach (var x in Model.deger1)
-                                {
-                                    for (var i = 1; i <= x.Id; i++)
-                                    {
-                                        var z = 0;
-                                        z = z + 1;
-                                    }
-                                    <option value="@x.RemoteDTValue">@x.RemoteDTName</option>
-                                }
+                                <option value="red">Anydesk</option>
+                                <option value="green">TeamViewer</option>
+                                <option value="blue">SplashTop</option>
 
 
                             </select>
@@ -108,40 +105,79 @@
                     </div>
                 </div>
             </td>
-            @foreach (var z in Model.deger1)
-            {
-                <td>
-                    <div class="@z.RemoteDTValue box " style="margin-left:10px;">
-                        <div class="container" style="width:350px;">
-                            <div class="panel panel-default" style="width:300px;">
-                                <div class="panel-body">
-                                    
-                                    <br />
-                                    <br />
-                                    <label>Kullanıcı Adı</label>
-                                    @Html.TextBoxFor(k => k.vdss1.RemoteDeskAd, new { @class = "form-control" })
+            <td>
+                <div class="red box " style="margin-left:10px;">
+                    <div class="container" style="width:350px;">
+                        <div class="panel panel-default" style="width:300px;">
+                            <div class="panel-body">
 
-                                    <label>Şifre</label>
-                                    @Html.TextBoxFor(k => k.vdss1.RemoteDeskPw, new { @class = "form-control" })
+                                <br />
+                                <br />
+                                <label>AnyDesk Id</label>
+                                @Html.TextBoxFor(y => y.AnyDesk, new { @class = "form-control" })
 
-                                    <br />
-                                    <br />
-                                    <br />
-                                    <br />
-                                    <br />
-                                </div>
+                                <label>AnyDesk Şifresi</label>
+                                @Html.TextBoxFor(y => y.AnydeskPw, new { @class = "form-control" })
+
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
                             </div>
                         </div>
                     </div>
-                </td>
-            }
+                </div>
+                <div class="green box " style="margin-left:10px;">
+                    <div class="container" style="width:350px;">
+                        <div class="panel panel-default" style="width:300px;">
+                            <div class="panel-body">
+
+                                <br />
+                                <br />
+                                <label>TeamViewer </label>
+                                @Html.TextBoxFor(y => y.TeamViewer, new { @class = "form-control" })
+                                <label>TeamViewer Şifresi</label>
+                                @Html.TextBoxFor(y => y.TeamViewerPw, new { @class = "form-control" })
+
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="blue box" style="margin-left:10px;">
+                    <div class="container" style="width:350px;">
+                        <div class="panel panel-default" style="width:300px;">
+                            <div class="panel-body">
+
+                                <br />
+                                <br />
+                                <label>SplashTop </label>
+                                @Html.TextBoxFor(y => y.SplashTop, new { @class = "form-control" })
+                                <label>SplashTop Şifresi</label>
+                                @Html.TextBoxFor(y => y.SplashTopPw, new { @class = "form-control" })
+
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
             <td>
-                <div class="1 2 3 4 5 6 7 8 9 10 box" style="margin-left:10px;">
+                <div class="red green blue box" style="margin-left:10px;">
                     <div class="container" style="width:350px;">
                         <div class="panel panel-default" style="width:300px;">
                             <div class="panel-body">
                                 <label>Notlar</label>
-                                @Html.TextAreaFor(y => y.vdss1.Notes, new { @class = "form-control" })
+                                @Html.TextAreaFor(y => y.Notes, new { @class = "form-control" })
                             </div>
                         </div>
                     </div>

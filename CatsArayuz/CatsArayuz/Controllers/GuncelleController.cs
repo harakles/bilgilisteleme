@@ -14,28 +14,22 @@ namespace BilgiListeleme.Controllers
     {
         DBCatsEntities db = new DBCatsEntities();
         [Authorize]
-        
         public ActionResult Index(int Id)
         {
-            List<SelectListItem> deger1 = (from i in db.TBLRemoteDT.ToList()
-                                           select new SelectListItem
-                                           {
-                                               Text = i.RemoteDTName,
-                                               Value = i.Id.ToString(),
-                                           }).ToList();
-            ViewBag.dgr1 = deger1;
             var hks = db.TBLVdsListe.Find(Id);
             return View(hks);
         }
-            public ActionResult VeriGuncelle(TBLVdsListe c)
+        public ActionResult VeriGuncelle(TBLVdsListe c)
         {
-            var sks = db.TBLRemoteDT.Where(k => k.Id == c.TBLRemoteDT.Id).FirstOrDefault();
-            c.TBLRemoteDT = sks;
             var vgn = db.TBLVdsListe.Find(c.Id);
             vgn.SirketAdı = c.SirketAdı;
             vgn.VdsKullanıcıAdı = c.VdsKullanıcıAdı;
             vgn.VdsIp = c.VdsIp;
             vgn.VdsPw = c.VdsPw;
+            vgn.TeamViewer = c.TeamViewer;
+            vgn.TeamViewerPw = c.TeamViewerPw;
+            vgn.AnyDesk = c.AnyDesk;
+            vgn.AnydeskPw = c.AnydeskPw;
             vgn.Notes = c.Notes;
             db.SaveChanges();
             return View("Index");
@@ -45,7 +39,7 @@ namespace BilgiListeleme.Controllers
             var dlt = db.TBLVdsListe.Find(Id);
             db.TBLVdsListe.Remove(dlt);
             db.SaveChanges();
-            return RedirectToAction("Index" , "Home");
+            return RedirectToAction("Index", "Home");
         }
     }
 }

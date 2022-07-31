@@ -12,13 +12,9 @@ namespace CatsArayuz.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class TBLAdminData
+    public partial class TBLUnvan
     {
         public int Id { get; set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
-        public string AdminUserName { get; set; }
-        public string AdminPw { get; set; }
-        public Nullable<int> UnvanId { get; set; }
+        public string Unvan { get; set; }
     }
 }

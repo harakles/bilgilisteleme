@@ -30,7 +30,7 @@
                             <br />
                             <br />
                             <br />
-                           
+
                         </div>
                     </div>
                 </div>
@@ -39,13 +39,20 @@
                 <div class="container" style="width:350px;">
                     <div class="panel panel-default" style="width:300px;">
                         <div class="panel-body">
-                            <label>Uzak Masaüstü</label>
-                            @Html.DropDownListFor(y => y.TBLRemoteDT.Id, (List<SelectListItem>) ViewBag.dgr1,
-                            new{@class = "form-control"})
-                            <label>Kullanıcı Adı</label>
-                            @Html.TextBoxFor(y => y.RemoteDeskAd, new { @class = "form-control" })
-                            <label>Şifre</label>
-                            @Html.TextBoxFor(y => y.RemoteDeskPw, new { @class = "form-control" })
+                            <label>TeamViewer </label>
+                            @Html.TextBoxFor(y => y.TeamViewer, new { @class = "form-control" })
+                            <label>TeamViewer Şifresi</label>
+                            @Html.TextBoxFor(y => y.TeamViewerPw, new { @class = "form-control" })
+                            <label>AnyDesk Id</label>
+                            @Html.TextBoxFor(y => y.AnyDesk, new { @class = "form-control" })
+
+                            <label>AnyDesk Şifresi</label>
+                            @Html.TextBoxFor(y => y.AnydeskPw, new { @class = "form-control" })
+                            <label>SplashTop</label>
+                            @Html.TextBoxFor(y => y.SplashTop, new { @class = "form-control" })
+                            <label>SplashTop Şifresi</label>
+                            @Html.TextBoxFor(y => y.SplashTopPw, new { @class = "form-control" })
+
                         </div>
                     </div>
                 </div>

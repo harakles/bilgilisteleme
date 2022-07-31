@@ -4,34 +4,58 @@
     <EntitySetMapping Name="TBLAdminData">
       <EntityTypeMapping TypeName="DBCatsModel.TBLAdminData">
         <MappingFragment StoreEntitySet="TBLAdminData">
+          <ScalarProperty Name="UnvanId" ColumnName="UnvanId" />
+          <ScalarProperty Name="AdminPw" ColumnName="AdminPw" />
+          <ScalarProperty Name="AdminUserName" ColumnName="AdminUserName" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="UserName" ColumnName="UserName" />
           <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="LastLT" ColumnName="LastLT" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="TBLRemoteDT">
-      <EntityTypeMapping TypeName="DBCatsModel.TBLRemoteDT">
-        <MappingFragment StoreEntitySet="TBLRemoteDT">
+    <EntitySetMapping Name="TBLEkle">
+      <EntityTypeMapping TypeName="DBCatsModel.TBLEkle">
+        <MappingFragment StoreEntitySet="TBLEkle">
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="RemoteDTName" ColumnName="RemoteDTName" />
-          <ScalarProperty Name="RemoteDTValue" ColumnName="RemoteDTValue" />
+          <ScalarProperty Name="RemoteDesktopApp" ColumnName="RemoteDesktopApp" />
+          <ScalarProperty Name="sil" ColumnName="sil" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="TBLVdsListe">
       <EntityTypeMapping TypeName="DBCatsModel.TBLVdsListe">
         <MappingFragment StoreEntitySet="TBLVdsListe">
+          <ScalarProperty Name="SirketTurId" ColumnName="SirketTurId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="SirketAdı" ColumnName="SirketAdı" />
           <ScalarProperty Name="VdsIp" ColumnName="VdsIp" />
           <ScalarProperty Name="VdsKullanıcıAdı" ColumnName="VdsKullanıcıAdı" />
           <ScalarProperty Name="VdsPw" ColumnName="VdsPw" />
           <ScalarProperty Name="RemoteDeskId" ColumnName="RemoteDeskId" />
-          <ScalarProperty Name="RemoteDeskAd" ColumnName="RemoteDeskAd" />
-          <ScalarProperty Name="RemoteDeskPw" ColumnName="RemoteDeskPw" />
+          <ScalarProperty Name="AnyDesk" ColumnName="AnyDesk" />
+          <ScalarProperty Name="AnydeskPw" ColumnName="AnydeskPw" />
           <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="TeamViewer" ColumnName="TeamViewer" />
+          <ScalarProperty Name="TeamViewerPw" ColumnName="TeamViewerPw" />
+          <ScalarProperty Name="SplashTop" ColumnName="SplashTop" />
+          <ScalarProperty Name="SplashTopPw" ColumnName="SplashTopPw" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLUnvan">
+      <EntityTypeMapping TypeName="DBCatsModel.TBLUnvan">
+        <MappingFragment StoreEntitySet="TBLUnvan">
+          <ScalarProperty Name="Unvan" ColumnName="Unvan" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLSirketTur">
+      <EntityTypeMapping TypeName="DBCatsModel.TBLSirketTur">
+        <MappingFragment StoreEntitySet="TBLSirketTur">
+          <ScalarProperty Name="SirketTuru" ColumnName="SirketTuru" />
+          <ScalarProperty Name="sil" ColumnName="sil" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

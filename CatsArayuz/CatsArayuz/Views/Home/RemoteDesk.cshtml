@@ -29,20 +29,32 @@
                             </th>
                             <th scope="col">
 
-                                <label>Uzak Masaüstü Adı</label>
+                                <label>TeamViewer</label>
 
 
                             </th>
                             <th scope="col">
 
-                                <label>Kullanıcı Adı</label>
+                                <label>TeamViewer Şifresi</label>
 
 
                             </th>
                             <th scope="col">
 
-                                <label>Şifre</label>
+                                <label>AnyDesk</label>
 
+
+                            </th>
+                            <th scope="col">
+                                <label>AnyDesk Şifrsi</label>
+
+                            </th>
+                            <th scope="col">
+                                <label>SplashTop</label>
+
+                            </th>
+                            <th scope="col">
+                                <label>SplashTop Şifrsi</label>
 
                             </th>
                             <th scope="col">
@@ -64,16 +76,22 @@
                                 @Html.DisplayFor(y => y.SirketAdı, new { @class = "form-control" })
                             </td>
                             <td scope="row">
-                                @Html.DisplayFor(y => y.TBLRemoteDT.RemoteDTName, new { @class = "form-control" })
+                                @Html.DisplayFor(y => y.TeamViewer, new { @class = "form-control" })
                             </td>
                             <td scope="row">
-                                @Html.DisplayFor(y => y.TBLRemoteDT.RemoteDTUserName, new { @class = "form-control" })
+                                @Html.DisplayFor(y => y.TeamViewerPw, new { @class = "form-control" })
                             </td>
                             <td scope="row">
-                                @Html.DisplayFor(y => y.TBLRemoteDT.RemoteDTPw, new { @class = "form-control" })
+                                @Html.DisplayFor(y => y.AnyDesk, new { @class = "form-control" })
                             </td>
                             <td scope="row">
-                                @Html.DisplayFor(y => y.Notes, new { @class = "form-control" })
+                                @Html.DisplayFor(y => y.AnyDesk, new { @class = "form-control" })
+                            </td>
+                            <td scope="row">
+                                @Html.DisplayFor(y => y.SplashTop, new { @class = "form-control" })
+                            </td>
+                            <td scope="row">
+                                @Html.DisplayFor(y => y.SplashTopPw, new { @class = "form-control" })
                             </td>
                             <td scope="row">
                                 <a class="btn btn-primary" href="/Home/Index">Geri Dön</a>

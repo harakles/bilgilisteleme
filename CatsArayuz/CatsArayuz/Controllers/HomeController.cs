@@ -43,19 +43,22 @@ namespace BilgiListeleme.Controllers
         [HttpGet]
         public ActionResult VeriEkle()
         {
-           
-            Class1 cs = new Class1();
-            
-            cs.deger1 = db.TBLRemoteDT.ToList();
-            
-            return View(cs);
+            List<SelectListItem> deger1 = (from i in db.TBLSirketTur.ToList()
+                                           select new SelectListItem
+                                           {
+                                               Text = i.SirketTuru,
+                                               Value = i.Id.ToString(),
+                                           }).ToList();
+            ViewBag.dgr1 = deger1;
+
+            return View();
         }
         [HttpPost]
-        public ActionResult VeriEkle(Class1 p)
+        public ActionResult VeriEkle(TBLVdsListe p)
         {
-
-            db.TBLVdsListe.Add(p.vdss1);
-            
+            var ktg = db.TBLSirketTur.Where(k => k.Id == p.TBLSirketTur.Id).FirstOrDefault();
+            p.TBLSirketTur = ktg;
+            db.TBLVdsListe.Add(p);
             db.SaveChanges();
             return RedirectToAction("Index", "Home");
 

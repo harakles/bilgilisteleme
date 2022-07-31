@@ -135,6 +135,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AdminHomeController.cs" />
     <Compile Include="Controllers\GuncelleController.cs" />
     <Compile Include="Controllers\GuvenlikController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -161,7 +162,13 @@
     <Compile Include="Models\TBLAdminData.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TBLRemoteDT.cs">
+    <Compile Include="Models\TBLEkle.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TBLSirketTur.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TBLUnvan.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TBLVdsListe.cs">
@@ -188,6 +195,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Image\cats22.png" />
+    <Content Include="Image\img_avatar2.png" />
+    <Content Include="Image\png.png" />
+    <Content Include="Image\çlış.jpg" />
     <Content Include="js\custom.js" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -253,9 +264,11 @@
     <Content Include="starter\fonts\fontawesome-webfont.woff" />
     <Content Include="starter\fonts\fontawesome-webfont.woff2" />
     <Content Include="starter\fonts\FontAwesome.otf" />
+    <Content Include="Views\Guvenlik\GirisYap1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\AdminHome\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

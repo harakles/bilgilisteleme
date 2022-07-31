@@ -7,15 +7,32 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="UserName" Type="nvarchar(max)" />
     <Property Name="Password" Type="nvarchar(max)" />
-    <Property Name="LastLT" Type="smalldatetime" />
+    <Property Name="AdminUserName" Type="nvarchar(max)" />
+    <Property Name="AdminPw" Type="nvarchar(max)" />
+    <Property Name="UnvanId" Type="int" />
   </EntityType>
-  <EntityType Name="TBLRemoteDT">
+  <EntityType Name="TBLEkle">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="RemoteDTName" Type="nvarchar(max)" />
-    <Property Name="RemoteDTValue" Type="int" />
+    <Property Name="RemoteDesktopApp" Type="nvarchar(max)" />
+    <Property Name="sil" Type="bit" />
+  </EntityType>
+  <EntityType Name="TBLSirketTur">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SirketTuru" Type="nvarchar(max)" />
+    <Property Name="sil" Type="bit" />
+  </EntityType>
+  <EntityType Name="TBLUnvan">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Unvan" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="TBLVdsListe">
     <Key>
@@ -27,28 +44,51 @@
     <Property Name="VdsKullanıcıAdı" Type="nvarchar(max)" />
     <Property Name="VdsPw" Type="nvarchar(max)" />
     <Property Name="RemoteDeskId" Type="int" />
-    <Property Name="RemoteDeskAd" Type="nvarchar(max)" />
-    <Property Name="RemoteDeskPw" Type="nvarchar(max)" />
+    <Property Name="AnyDesk" Type="nvarchar(max)" />
+    <Property Name="AnydeskPw" Type="nvarchar(max)" />
     <Property Name="Notes" Type="nvarchar(max)" />
+    <Property Name="TeamViewer" Type="nvarchar(max)" />
+    <Property Name="TeamViewerPw" Type="nvarchar(max)" />
+    <Property Name="SplashTop" Type="nvarchar(max)" />
+    <Property Name="SplashTopPw" Type="nvarchar(max)" />
+    <Property Name="SirketTurId" Type="int" />
   </EntityType>
-  <Association Name="FK_TBLVdsListe_TBLRemoteDT">
-    <End Role="TBLRemoteDT" Type="Self.TBLRemoteDT" Multiplicity="0..1" />
-    <End Role="TBLVdsListe" Type="Self.TBLVdsListe" Multiplicity="*" />
+  <Association Name="FK_TBLVdsListe_TBLEkle">
+    <End Role="TBLEkle" Type="Self.TBLEkle" Multiplicity="1" />
+    <End Role="TBLVdsListe" Type="Self.TBLVdsListe" Multiplicity="0..1" />
     <ReferentialConstraint>
-      <Principal Role="TBLRemoteDT">
+      <Principal Role="TBLEkle">
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="TBLVdsListe">
-        <PropertyRef Name="RemoteDeskId" />
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBLVdsListe_TBLSirketTur">
+    <End Role="TBLSirketTur" Type="Self.TBLSirketTur" Multiplicity="1" />
+    <End Role="TBLVdsListe" Type="Self.TBLVdsListe" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="TBLSirketTur">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TBLVdsListe">
+        <PropertyRef Name="Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="DBCatsModelStoreContainer">
     <EntitySet Name="TBLAdminData" EntityType="Self.TBLAdminData" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="TBLRemoteDT" EntityType="Self.TBLRemoteDT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBLEkle" EntityType="Self.TBLEkle" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBLSirketTur" EntityType="Self.TBLSirketTur" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBLUnvan" EntityType="Self.TBLUnvan" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TBLVdsListe" EntityType="Self.TBLVdsListe" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_TBLVdsListe_TBLRemoteDT" Association="Self.FK_TBLVdsListe_TBLRemoteDT">
-      <End Role="TBLRemoteDT" EntitySet="TBLRemoteDT" />
+    <AssociationSet Name="FK_TBLVdsListe_TBLEkle" Association="Self.FK_TBLVdsListe_TBLEkle">
+      <End Role="TBLEkle" EntitySet="TBLEkle" />
+      <End Role="TBLVdsListe" EntitySet="TBLVdsListe" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBLVdsListe_TBLSirketTur" Association="Self.FK_TBLVdsListe_TBLSirketTur">
+      <End Role="TBLSirketTur" EntitySet="TBLSirketTur" />
       <End Role="TBLVdsListe" EntitySet="TBLVdsListe" />
     </AssociationSet>
   </EntityContainer>

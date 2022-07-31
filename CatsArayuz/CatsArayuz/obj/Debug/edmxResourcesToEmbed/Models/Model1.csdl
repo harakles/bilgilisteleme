@@ -7,16 +7,18 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="LastLT" Type="DateTime" Precision="0" />
+    <Property Name="AdminUserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AdminPw" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UnvanId" Type="Int32" />
   </EntityType>
-  <EntityType Name="TBLRemoteDT">
+  <EntityType Name="TBLEkle">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="RemoteDTName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="RemoteDTValue" Type="Int32" />
-    <NavigationProperty Name="TBLVdsListe" Relationship="Self.FK_TBLVdsListe_TBLRemoteDT" FromRole="TBLRemoteDT" ToRole="TBLVdsListe" />
+    <Property Name="RemoteDesktopApp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="sil" Type="Boolean" />
+    <NavigationProperty Name="TBLVdsListe" Relationship="DBCatsModel.FK_TBLVdsListe_TBLEkle" FromRole="TBLEkle" ToRole="TBLVdsListe" />
   </EntityType>
   <EntityType Name="TBLVdsListe">
     <Key>
@@ -28,30 +30,70 @@
     <Property Name="VdsKullanıcıAdı" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="VdsPw" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="RemoteDeskId" Type="Int32" />
-    <Property Name="RemoteDeskAd" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="RemoteDeskPw" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AnyDesk" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AnydeskPw" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="TBLRemoteDT" Relationship="Self.FK_TBLVdsListe_TBLRemoteDT" FromRole="TBLVdsListe" ToRole="TBLRemoteDT" />
+    <Property Name="TeamViewer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TeamViewerPw" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SplashTop" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SplashTopPw" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SirketTurId" Type="Int32" />
+    <NavigationProperty Name="TBLEkle" Relationship="DBCatsModel.FK_TBLVdsListe_TBLEkle" FromRole="TBLVdsListe" ToRole="TBLEkle" />
+    <NavigationProperty Name="TBLSirketTur" Relationship="DBCatsModel.FK_TBLVdsListe_TBLSirketTur" FromRole="TBLVdsListe" ToRole="TBLSirketTur" />
   </EntityType>
-  <Association Name="FK_TBLVdsListe_TBLRemoteDT">
-    <End Role="TBLRemoteDT" Type="Self.TBLRemoteDT" Multiplicity="0..1" />
-    <End Role="TBLVdsListe" Type="Self.TBLVdsListe" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TBLRemoteDT">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="TBLVdsListe">
-        <PropertyRef Name="RemoteDeskId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="DBCatsEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="TBLAdminData" EntityType="Self.TBLAdminData" />
-    <EntitySet Name="TBLRemoteDT" EntityType="Self.TBLRemoteDT" />
+    <EntitySet Name="TBLEkle" EntityType="Self.TBLEkle" />
     <EntitySet Name="TBLVdsListe" EntityType="Self.TBLVdsListe" />
-    <AssociationSet Name="FK_TBLVdsListe_TBLRemoteDT" Association="Self.FK_TBLVdsListe_TBLRemoteDT">
-      <End Role="TBLRemoteDT" EntitySet="TBLRemoteDT" />
+    <EntitySet Name="TBLUnvan" EntityType="DBCatsModel.TBLUnvan" />
+    <EntitySet Name="TBLSirketTur" EntityType="DBCatsModel.TBLSirketTur" />
+    <AssociationSet Name="FK_TBLVdsListe_TBLEkle" Association="DBCatsModel.FK_TBLVdsListe_TBLEkle">
+      <End Role="TBLEkle" EntitySet="TBLEkle" />
+      <End Role="TBLVdsListe" EntitySet="TBLVdsListe" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBLVdsListe_TBLSirketTur" Association="DBCatsModel.FK_TBLVdsListe_TBLSirketTur">
+      <End Role="TBLSirketTur" EntitySet="TBLSirketTur" />
       <End Role="TBLVdsListe" EntitySet="TBLVdsListe" />
     </AssociationSet>
   </EntityContainer>
+  <EntityType Name="TBLUnvan">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Unvan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TBLSirketTur">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sil" Type="Boolean" />
+    <NavigationProperty Name="TBLVdsListe" Relationship="DBCatsModel.FK_TBLVdsListe_TBLSirketTur" FromRole="TBLSirketTur" ToRole="TBLVdsListe" />
+    <Property Name="SirketTuru" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_TBLVdsListe_TBLEkle">
+    <End Type="DBCatsModel.TBLEkle" Role="TBLEkle" Multiplicity="1" />
+    <End Type="DBCatsModel.TBLVdsListe" Role="TBLVdsListe" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="TBLEkle">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TBLVdsListe">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBLVdsListe_TBLSirketTur">
+    <End Type="DBCatsModel.TBLSirketTur" Role="TBLSirketTur" Multiplicity="1" />
+    <End Type="DBCatsModel.TBLVdsListe" Role="TBLVdsListe" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="TBLSirketTur">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TBLVdsListe">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

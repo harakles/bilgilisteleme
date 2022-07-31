@@ -4,11 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="52d60df51a6f4fb5a5f5960b18126652" Name="Diagram1">
-        <EntityTypeShape EntityType="DBCatsModel.TBLAdminData" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBCatsModel.TBLRemoteDT" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBCatsModel.TBLVdsListe" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <AssociationConnector Association="DBCatsModel.FK_TBLVdsListe_TBLRemoteDT" ManuallyRouted="false" />
+      <Diagram DiagramId="8a27552dc90d482aaf6dff50e9f12583" Name="Diagram1">
+        <EntityTypeShape EntityType="DBCatsModel.TBLAdminData" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBCatsModel.TBLEkle" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBCatsModel.TBLVdsListe" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBCatsModel.TBLUnvan" Width="1.5" PointX="3.375" PointY="3.75" />
+        <EntityTypeShape EntityType="DBCatsModel.TBLSirketTur" Width="1.5" PointX="5.375" PointY="0.875" />
+        <AssociationConnector Association="DBCatsModel.FK_TBLVdsListe_TBLEkle" />
+        <AssociationConnector Association="DBCatsModel.FK_TBLVdsListe_TBLSirketTur" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
