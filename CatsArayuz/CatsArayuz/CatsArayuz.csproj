@@ -265,10 +265,14 @@
     <Content Include="starter\fonts\fontawesome-webfont.woff2" />
     <Content Include="starter\fonts\FontAwesome.otf" />
     <Content Include="Views\Guvenlik\GirisYap1.cshtml" />
+    <Content Include="Views\Shared\Layout.cshtml" />
+    <Content Include="Views\Home\AdminIndex.cshtml" />
+    <Content Include="Views\AdminHome\AdminVeriEkle.cshtml" />
+    <Content Include="Views\AdminHome\AdminIndex.cshtml" />
+    <Content Include="Views\AdminHome\AdminRemoteDesk.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\AdminHome\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -4,7 +4,8 @@
 @using SweetAlert
 @model PagedList.IPagedList<TBLVdsListe>
 @{
-    ViewBag.Title = " List of data";
+    ViewBag.Title = "AdminIndex";
+    Layout = "~/Views/Shared/Layout.cshtml";
 }
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -26,7 +27,7 @@
             }
         </label>
     </div>
-      
+
     <div class="">
         <table class="table caption-top" id="datatable">
             <thead>
@@ -76,5 +77,7 @@
 @section scripts{
     <script src="~/js/custom.js"></script>
 }
+
+
 
 

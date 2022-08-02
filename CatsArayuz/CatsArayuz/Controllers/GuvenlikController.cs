@@ -24,7 +24,7 @@ namespace BilgiListeleme.Controllers
             if (AdminData != null)
             {
                 FormsAuthentication.SetAuthCookie(AdminData.UserName, false);
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("AdminIndex", "AdminHome");
             }
             else if (bilgiler != null)
             {
@@ -54,7 +54,7 @@ namespace BilgiListeleme.Controllers
             if (AdminData != null)
             {
                 FormsAuthentication.SetAuthCookie(AdminData.UserName, false);
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("AdminIndex", "AdminHome");
             }
             else if (bilgiler != null)
             {
