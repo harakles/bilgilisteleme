@@ -12,19 +12,19 @@ namespace CatsArayuz.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class TBLSirketTur
+    public partial class TBLRoles
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TBLSirketTur()
+        public TBLRoles()
         {
-            this.TBLVdsListe = new HashSet<TBLVdsListe>();
+            this.TBLAdminData = new HashSet<TBLAdminData>();
         }
     
         public int Id { get; set; }
-        public Nullable<bool> Sil { get; set; }
-        public string SirketTuru { get; set; }
+        public string Roles { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TBLVdsListe> TBLVdsListe { get; set; }
+        public virtual ICollection<TBLAdminData> TBLAdminData { get; set; }
+        public virtual TBLUserRoleMappings TBLUserRoleMappings { get; set; }
     }
 }

@@ -13,7 +13,7 @@ namespace BilgiListeleme.Controllers
     public class GuncelleController : Controller
     {
         DBCatsEntities db = new DBCatsEntities();
-        [Authorize]
+        [Authorize(Roles = "Employee")]
         public ActionResult Index(int Id)
         {
             var hks = db.TBLVdsListe.Find(Id);

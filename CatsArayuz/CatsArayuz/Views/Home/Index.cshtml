@@ -26,12 +26,13 @@
             }
         </label>
     </div>
-      
+
     <div class="">
         <table class="table caption-top" id="datatable">
             <thead>
                 <tr>
                     <th scope="col">Id</th>
+                    <th scope="col">Şirket Türü</th>
                     <th scope="col">Şirket İsmi</th>
                     <th scope="col">Vds İp</th>
                     <th scope="col">Vds Kullanıcı Adı</th>
@@ -46,19 +47,41 @@
                 {
                     <tr>
                         <th scope="row">@x.Id</th>
-                        <td>@x.SirketAdı</td>
-                        <td>@x.VdsIp</td>
-                        <td>@x.VdsKullanıcıAdı</td>
-                        <td>@x.VdsPw</td>
-                        <td><a href="/Home/RemoteDesk/@x.Id" class="btn btn-info" type="button">Uzak Masaüstü</a></td>
-                        <td><a href="/Guncelle/Index/@x.Id" class="btn btn-warning" type="button">güncelle</a></td>
                         <td>
-                            <a href="javascript:void(0);" class="delete-btn , btn btn-danger" title="Sil" data-id="@x.Id"><i class="glyphicon glyphicon-trash">Sil</i></a>
-
+                            @if (x.SirketTurId != null)
+                            {
+                                if (x.SirketTurId == 1)
+                                {
+                                    <a>Belediye</a>
+                                }
+                                else if (x.SirketTurId == 2)
+                                {
+                                    <a>Kafe</a>
+                                }
+                                else if (x.SirketTurId == 3)
+                                {
+                                    <a>Toptancı</a>
+                                }
+                                else
+                                {
+                                    <a>Seyyar</a>
+                                }
+                            }
+                            else { }
                         </td>
+                    <td>@x.SirketAdı</td>
+                    <td>@x.VdsIp</td>
+                    <td>@x.VdsKullanıcıAdı</td>
+                    <td>@x.VdsPw</td>
+                    <td><a href="/Home/RemoteDesk/@x.Id" class="btn btn-info" type="button">Uzak Masaüstü</a></td>
+                    <td><a href="/Guncelle/Index/@x.Id" class="btn btn-warning" type="button">güncelle</a></td>
+                    <td>
+                        <a href="javascript:void(0);" class="delete-btn , btn btn-danger" title="Sil" data-id="@x.Id"><i class="glyphicon glyphicon-trash">Sil</i></a>
 
-                    </tr>
-                }
+                    </td>
+
+                </tr>
+            }
             </tbody>
         </table>
     </div>

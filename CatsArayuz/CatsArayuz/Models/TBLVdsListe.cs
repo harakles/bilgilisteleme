@@ -22,14 +22,15 @@ namespace CatsArayuz.Models
         public Nullable<int> RemoteDeskId { get; set; }
         public string AnyDesk { get; set; }
         public string AnydeskPw { get; set; }
-        public string Notes { get; set; }
         public string TeamViewer { get; set; }
         public string TeamViewerPw { get; set; }
         public string SplashTop { get; set; }
         public string SplashTopPw { get; set; }
         public Nullable<int> SirketTurId { get; set; }
+        public string Notes { get; set; }
     
         public virtual TBLEkle TBLEkle { get; set; }
         public virtual TBLSirketTur TBLSirketTur { get; set; }
+        public virtual TBLUserRoleMappings TBLUserRoleMappings { get; set; }
     }
 }

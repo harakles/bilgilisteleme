@@ -11,6 +11,7 @@ namespace BilgiListeleme.Controllers
     {
         DBCatsEntities db = new DBCatsEntities();
         // GET: Admin
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             var data = db.TBLAdminData.ToList();

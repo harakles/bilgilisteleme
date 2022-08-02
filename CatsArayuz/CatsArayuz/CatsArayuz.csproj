@@ -144,6 +144,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\classs\Class1.cs" />
+    <Compile Include="Models\classs\UserRoleProvider.cs" />
     <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -165,10 +166,13 @@
     <Compile Include="Models\TBLEkle.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TBLRoles.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\TBLSirketTur.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\TBLUnvan.cs">
+    <Compile Include="Models\TBLUserRoleMappings.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TBLVdsListe.cs">
@@ -266,7 +270,6 @@
     <Content Include="starter\fonts\FontAwesome.otf" />
     <Content Include="Views\Guvenlik\GirisYap1.cshtml" />
     <Content Include="Views\Shared\Layout.cshtml" />
-    <Content Include="Views\Home\AdminIndex.cshtml" />
     <Content Include="Views\AdminHome\AdminVeriEkle.cshtml" />
     <Content Include="Views\AdminHome\AdminIndex.cshtml" />
     <Content Include="Views\AdminHome\AdminRemoteDesk.cshtml" />

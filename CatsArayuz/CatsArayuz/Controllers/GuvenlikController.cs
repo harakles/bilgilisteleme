@@ -19,17 +19,24 @@ namespace BilgiListeleme.Controllers
         }
         [HttpPost]
         public ActionResult GirisYap(TBLAdminData t)
-        { var AdminData = db.TBLAdminData.FirstOrDefault(x => x.AdminUserName == t.UserName && x.AdminPw == t.Password);
+        { 
             var bilgiler = db.TBLAdminData.FirstOrDefault(x => x.UserName == t.UserName && x.Password == t.Password);
-            if (AdminData != null)
+            if (bilgiler != null)
             {
-                FormsAuthentication.SetAuthCookie(AdminData.UserName, false);
-                return RedirectToAction("AdminIndex", "AdminHome");
-            }
-            else if (bilgiler != null)
-            {
-                FormsAuthentication.SetAuthCookie(bilgiler.UserName, false);
-                return RedirectToAction("Index", "Home");
+                if (bilgiler.RolId == 1)
+                {
+                    FormsAuthentication.SetAuthCookie(bilgiler.UserName,false);
+                    return RedirectToAction("AdminIndex", "AdminHome");
+                }
+                else if (bilgiler.RolId == 2)
+                {
+                    FormsAuthentication.SetAuthCookie(bilgiler.UserName, false);
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    return View("GirisYap1");
+                }
             }
             else
             {
@@ -49,14 +56,13 @@ namespace BilgiListeleme.Controllers
         [HttpPost]
         public ActionResult GirisYap1(TBLAdminData t)
         {
-            var AdminData = db.TBLAdminData.FirstOrDefault(x => x.AdminUserName == t.UserName && x.AdminPw == t.Password);
             var bilgiler = db.TBLAdminData.FirstOrDefault(x => x.UserName == t.UserName && x.Password == t.Password);
-            if (AdminData != null)
+            if (bilgiler.RolId == 1)
             {
-                FormsAuthentication.SetAuthCookie(AdminData.UserName, false);
+                FormsAuthentication.SetAuthCookie(bilgiler.UserName, false);
                 return RedirectToAction("AdminIndex", "AdminHome");
             }
-            else if (bilgiler != null)
+            else if (bilgiler.RolId == 2)
             {
                 FormsAuthentication.SetAuthCookie(bilgiler.UserName, false);
                 return RedirectToAction("Index", "Home");
@@ -64,7 +70,6 @@ namespace BilgiListeleme.Controllers
             else
             {
                 return View("GirisYap1");
-
             }
         }
     }

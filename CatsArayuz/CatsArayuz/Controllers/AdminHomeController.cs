@@ -15,7 +15,7 @@ namespace BilgiListeleme.Controllers
     public class AdminHomeController : Controller
     {
         DBCatsEntities db = new DBCatsEntities();
-        [Authorize]
+        [Authorize(Roles ="Admin")]
         public ActionResult AdminIndex(string p, int sayfa = 1)
         {
 
@@ -30,7 +30,7 @@ namespace BilgiListeleme.Controllers
             //var datas = db.TBLCustomerVdsList.ToList().ToPagedList(sayfa, 8);
             //return View(datas);
         }
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult AdminRemoteDesk(int Id)
         {
 
@@ -39,7 +39,7 @@ namespace BilgiListeleme.Controllers
             return View(yks);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public ActionResult AdminVeriEkle()
         {
@@ -63,7 +63,7 @@ namespace BilgiListeleme.Controllers
             return RedirectToAction("Index", "Home");
 
         }
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult LogOut()
         {
             FormsAuthentication.SignOut();

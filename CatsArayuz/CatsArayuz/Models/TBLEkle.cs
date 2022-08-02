@@ -14,10 +14,17 @@ namespace CatsArayuz.Models
     
     public partial class TBLEkle
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TBLEkle()
+        {
+            this.TBLVdsListe = new HashSet<TBLVdsListe>();
+        }
+    
         public int Id { get; set; }
         public string RemoteDesktopApp { get; set; }
         public Nullable<bool> sil { get; set; }
     
-        public virtual TBLVdsListe TBLVdsListe { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TBLVdsListe> TBLVdsListe { get; set; }
     }
 }

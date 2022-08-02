@@ -12,9 +12,13 @@ namespace CatsArayuz.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class TBLUnvan
+    public partial class TBLUserRoleMappings
     {
         public int Id { get; set; }
-        public string Unvan { get; set; }
+        public Nullable<int> UserId { get; set; }
+        public Nullable<int> RoleId { get; set; }
+    
+        public virtual TBLRoles TBLRoles { get; set; }
+        public virtual TBLVdsListe TBLVdsListe { get; set; }
     }
 }

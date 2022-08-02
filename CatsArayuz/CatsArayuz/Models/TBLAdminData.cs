@@ -17,8 +17,8 @@ namespace CatsArayuz.Models
         public int Id { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
-        public string AdminUserName { get; set; }
-        public string AdminPw { get; set; }
-        public Nullable<int> UnvanId { get; set; }
+        public Nullable<int> RolId { get; set; }
+    
+        public virtual TBLRoles TBLRoles { get; set; }
     }
 }
