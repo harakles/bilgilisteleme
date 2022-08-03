@@ -27,9 +27,9 @@ namespace CatsArayuz.Models
     
         public virtual DbSet<TBLAdminData> TBLAdminData { get; set; }
         public virtual DbSet<TBLEkle> TBLEkle { get; set; }
-        public virtual DbSet<TBLSirketTur> TBLSirketTur { get; set; }
-        public virtual DbSet<TBLVdsListe> TBLVdsListe { get; set; }
         public virtual DbSet<TBLRoles> TBLRoles { get; set; }
+        public virtual DbSet<TBLSirketTur> TBLSirketTur { get; set; }
         public virtual DbSet<TBLUserRoleMappings> TBLUserRoleMappings { get; set; }
+        public virtual DbSet<TBLVdsListe> TBLVdsListe { get; set; }
     }
 }

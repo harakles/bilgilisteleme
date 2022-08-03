@@ -8,7 +8,7 @@
     <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="RolId" Type="Int32" />
-    <NavigationProperty Name="TBLRoles" Relationship="DBCatsModel.FK_TBLAdminData_TBLRoles" FromRole="TBLAdminData" ToRole="TBLRoles" />
+    <NavigationProperty Name="TBLRoles" Relationship="Self.FK_TBLAdminData_TBLRoles" FromRole="TBLAdminData" ToRole="TBLRoles" />
   </EntityType>
   <EntityType Name="TBLEkle">
     <Key>
@@ -19,6 +19,15 @@
     <Property Name="sil" Type="Boolean" />
     <NavigationProperty Name="TBLVdsListe" Relationship="Self.FK_TBLVdsListe_TBLEkle" FromRole="TBLEkle" ToRole="TBLVdsListe" />
   </EntityType>
+  <EntityType Name="TBLRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Roles" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TBLAdminData" Relationship="Self.FK_TBLAdminData_TBLRoles" FromRole="TBLRoles" ToRole="TBLAdminData" />
+    <NavigationProperty Name="TBLUserRoleMappings" Relationship="Self.FK_TBLUserRoleMappings_TBLRoles" FromRole="TBLRoles" ToRole="TBLUserRoleMappings" />
+  </EntityType>
   <EntityType Name="TBLSirketTur">
     <Key>
       <PropertyRef Name="Id" />
@@ -27,6 +36,16 @@
     <Property Name="Sil" Type="Boolean" />
     <Property Name="SirketTuru" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="TBLVdsListe" Relationship="Self.FK_TBLVdsListe_TBLSirketTur" FromRole="TBLSirketTur" ToRole="TBLVdsListe" />
+  </EntityType>
+  <EntityType Name="TBLUserRoleMappings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="RoleId" Type="Int32" />
+    <NavigationProperty Name="TBLRoles" Relationship="Self.FK_TBLUserRoleMappings_TBLRoles" FromRole="TBLUserRoleMappings" ToRole="TBLRoles" />
+    <NavigationProperty Name="TBLVdsListe" Relationship="Self.FK_TBLUserRoleMappings_TBLVdsListe" FromRole="TBLUserRoleMappings" ToRole="TBLVdsListe" />
   </EntityType>
   <EntityType Name="TBLVdsListe">
     <Key>
@@ -45,11 +64,23 @@
     <Property Name="SplashTop" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="SplashTopPw" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="SirketTurId" Type="Int32" />
+    <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="TBLEkle" Relationship="Self.FK_TBLVdsListe_TBLEkle" FromRole="TBLVdsListe" ToRole="TBLEkle" />
     <NavigationProperty Name="TBLSirketTur" Relationship="Self.FK_TBLVdsListe_TBLSirketTur" FromRole="TBLVdsListe" ToRole="TBLSirketTur" />
-    <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="TBLUserRoleMappings" Relationship="DBCatsModel.FK_TBLUserRoleMappings_TBLVdsListe" FromRole="TBLVdsListe" ToRole="TBLUserRoleMappings" />
+    <NavigationProperty Name="TBLUserRoleMappings" Relationship="Self.FK_TBLUserRoleMappings_TBLVdsListe" FromRole="TBLVdsListe" ToRole="TBLUserRoleMappings" />
   </EntityType>
+  <Association Name="FK_TBLAdminData_TBLRoles">
+    <End Role="TBLRoles" Type="Self.TBLRoles" Multiplicity="0..1" />
+    <End Role="TBLAdminData" Type="Self.TBLAdminData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TBLRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TBLAdminData">
+        <PropertyRef Name="RolId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_TBLVdsListe_TBLEkle">
     <End Role="TBLEkle" Type="Self.TBLEkle" Multiplicity="0..1" />
     <End Role="TBLVdsListe" Type="Self.TBLVdsListe" Multiplicity="*" />
@@ -59,6 +90,18 @@
       </Principal>
       <Dependent Role="TBLVdsListe">
         <PropertyRef Name="RemoteDeskId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TBLUserRoleMappings_TBLRoles">
+    <End Role="TBLRoles" Type="Self.TBLRoles" Multiplicity="1" />
+    <End Role="TBLUserRoleMappings" Type="Self.TBLUserRoleMappings" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="TBLRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TBLUserRoleMappings">
+        <PropertyRef Name="Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -74,80 +117,9 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="DBCatsEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="TBLAdminData" EntityType="Self.TBLAdminData" />
-    <EntitySet Name="TBLEkle" EntityType="Self.TBLEkle" />
-    <EntitySet Name="TBLSirketTur" EntityType="Self.TBLSirketTur" />
-    <EntitySet Name="TBLVdsListe" EntityType="Self.TBLVdsListe" />
-    <AssociationSet Name="FK_TBLVdsListe_TBLEkle" Association="Self.FK_TBLVdsListe_TBLEkle">
-      <End Role="TBLEkle" EntitySet="TBLEkle" />
-      <End Role="TBLVdsListe" EntitySet="TBLVdsListe" />
-    </AssociationSet>
-    <AssociationSet Name="FK_TBLVdsListe_TBLSirketTur" Association="Self.FK_TBLVdsListe_TBLSirketTur">
-      <End Role="TBLSirketTur" EntitySet="TBLSirketTur" />
-      <End Role="TBLVdsListe" EntitySet="TBLVdsListe" />
-    </AssociationSet>
-    <EntitySet Name="TBLRoles" EntityType="DBCatsModel.TBLRoles" />
-    <AssociationSet Name="FK_TBLAdminData_TBLRoles" Association="DBCatsModel.FK_TBLAdminData_TBLRoles">
-      <End Role="TBLRoles" EntitySet="TBLRoles" />
-      <End Role="TBLAdminData" EntitySet="TBLAdminData" />
-    </AssociationSet>
-    <EntitySet Name="TBLUserRoleMappings" EntityType="DBCatsModel.TBLUserRoleMappings" />
-    <AssociationSet Name="FK_TBLUserRoleMappings_TBLRoles" Association="DBCatsModel.FK_TBLUserRoleMappings_TBLRoles">
-      <End Role="TBLRoles" EntitySet="TBLRoles" />
-      <End Role="TBLUserRoleMappings" EntitySet="TBLUserRoleMappings" />
-    </AssociationSet>
-    <AssociationSet Name="FK_TBLUserRoleMappings_TBLVdsListe" Association="DBCatsModel.FK_TBLUserRoleMappings_TBLVdsListe">
-      <End Role="TBLVdsListe" EntitySet="TBLVdsListe" />
-      <End Role="TBLUserRoleMappings" EntitySet="TBLUserRoleMappings" />
-    </AssociationSet>
-  </EntityContainer>
-  <EntityType Name="TBLRoles">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Roles" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="TBLAdminData" Relationship="DBCatsModel.FK_TBLAdminData_TBLRoles" FromRole="TBLRoles" ToRole="TBLAdminData" />
-    <NavigationProperty Name="TBLUserRoleMappings" Relationship="DBCatsModel.FK_TBLUserRoleMappings_TBLRoles" FromRole="TBLRoles" ToRole="TBLUserRoleMappings" />
-  </EntityType>
-  <Association Name="FK_TBLAdminData_TBLRoles">
-    <End Type="DBCatsModel.TBLRoles" Role="TBLRoles" Multiplicity="0..1" />
-    <End Type="DBCatsModel.TBLAdminData" Role="TBLAdminData" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TBLRoles">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="TBLAdminData">
-        <PropertyRef Name="RolId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <EntityType Name="TBLUserRoleMappings">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" />
-    <Property Name="UserId" Type="Int32" />
-    <Property Name="RoleId" Type="Int32" />
-    <NavigationProperty Name="TBLRoles" Relationship="DBCatsModel.FK_TBLUserRoleMappings_TBLRoles" FromRole="TBLUserRoleMappings" ToRole="TBLRoles" />
-    <NavigationProperty Name="TBLVdsListe" Relationship="DBCatsModel.FK_TBLUserRoleMappings_TBLVdsListe" FromRole="TBLUserRoleMappings" ToRole="TBLVdsListe" />
-  </EntityType>
-  <Association Name="FK_TBLUserRoleMappings_TBLRoles">
-    <End Type="DBCatsModel.TBLRoles" Role="TBLRoles" Multiplicity="1" />
-    <End Type="DBCatsModel.TBLUserRoleMappings" Role="TBLUserRoleMappings" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="TBLRoles">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="TBLUserRoleMappings">
-        <PropertyRef Name="Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_TBLUserRoleMappings_TBLVdsListe">
-    <End Type="DBCatsModel.TBLVdsListe" Role="TBLVdsListe" Multiplicity="1" />
-    <End Type="DBCatsModel.TBLUserRoleMappings" Role="TBLUserRoleMappings" Multiplicity="0..1" />
+    <End Role="TBLVdsListe" Type="Self.TBLVdsListe" Multiplicity="1" />
+    <End Role="TBLUserRoleMappings" Type="Self.TBLUserRoleMappings" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="TBLVdsListe">
         <PropertyRef Name="Id" />
@@ -157,4 +129,32 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityContainer Name="DBCatsEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TBLAdminData" EntityType="Self.TBLAdminData" />
+    <EntitySet Name="TBLEkle" EntityType="Self.TBLEkle" />
+    <EntitySet Name="TBLRoles" EntityType="Self.TBLRoles" />
+    <EntitySet Name="TBLSirketTur" EntityType="Self.TBLSirketTur" />
+    <EntitySet Name="TBLUserRoleMappings" EntityType="Self.TBLUserRoleMappings" />
+    <EntitySet Name="TBLVdsListe" EntityType="Self.TBLVdsListe" />
+    <AssociationSet Name="FK_TBLAdminData_TBLRoles" Association="Self.FK_TBLAdminData_TBLRoles">
+      <End Role="TBLRoles" EntitySet="TBLRoles" />
+      <End Role="TBLAdminData" EntitySet="TBLAdminData" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBLVdsListe_TBLEkle" Association="Self.FK_TBLVdsListe_TBLEkle">
+      <End Role="TBLEkle" EntitySet="TBLEkle" />
+      <End Role="TBLVdsListe" EntitySet="TBLVdsListe" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBLUserRoleMappings_TBLRoles" Association="Self.FK_TBLUserRoleMappings_TBLRoles">
+      <End Role="TBLRoles" EntitySet="TBLRoles" />
+      <End Role="TBLUserRoleMappings" EntitySet="TBLUserRoleMappings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBLVdsListe_TBLSirketTur" Association="Self.FK_TBLVdsListe_TBLSirketTur">
+      <End Role="TBLSirketTur" EntitySet="TBLSirketTur" />
+      <End Role="TBLVdsListe" EntitySet="TBLVdsListe" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TBLUserRoleMappings_TBLVdsListe" Association="Self.FK_TBLUserRoleMappings_TBLVdsListe">
+      <End Role="TBLVdsListe" EntitySet="TBLVdsListe" />
+      <End Role="TBLUserRoleMappings" EntitySet="TBLUserRoleMappings" />
+    </AssociationSet>
+  </EntityContainer>
 </Schema>
